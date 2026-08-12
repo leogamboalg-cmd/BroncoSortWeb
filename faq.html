@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ | BroncoSort</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --green: #0a7a35;
+        --green2: #18a94b;
+        --text: #08140c;
+        --muted: #5b6a61;
+        --bg: #f5faf6;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(22, 163, 74, 0.12),
+            transparent 0 30%
+          ),
+          var(--bg);
+      }
+
+      .nav {
+        height: 92px;
+        padding: 0 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+        color: var(--text);
+        font-size: 2.3rem;
+        font-weight: 900;
+        letter-spacing: -2px;
+      }
+
+      .logo span {
+        color: var(--green2);
+      }
+
+      .logo-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #18a94b, #08722f);
+        color: white;
+        box-shadow: 0 12px 30px rgba(10, 122, 53, 0.18);
+      }
+
+      .links {
+        display: flex;
+        gap: 38px;
+      }
+
+      .links a {
+        text-decoration: none;
+        color: #142319;
+        font-weight: 800;
+        position: relative;
+      }
+
+      .links .active {
+        color: var(--green);
+      }
+
+      .links .active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -12px;
+        height: 3px;
+        border-radius: 999px;
+        background: var(--green2);
+      }
+
+      .chrome-btn {
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(135deg, #16a34a, #08722f);
+        padding: 16px 24px;
+        border-radius: 14px;
+        font-weight: 800;
+        box-shadow: 0 16px 30px rgba(10, 122, 53, 0.18);
+      }
+
+      .hero {
+        max-width: 1350px;
+        margin: auto;
+        padding: 90px 56px 40px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 22px;
+        border-radius: 999px;
+        background: #def6e3;
+        color: #08732f;
+        font-weight: 800;
+      }
+
+      h1 {
+        margin-top: 28px;
+        font-size: 5.5rem;
+        line-height: 0.92;
+        letter-spacing: -5px;
+        font-weight: 900;
+      }
+
+      .hero p {
+        margin-top: 28px;
+        color: var(--muted);
+        font-size: 1.3rem;
+        line-height: 1.7;
+        max-width: 760px;
+      }
+
+      .faq-grid {
+        max-width: 1350px;
+        margin: auto;
+        padding: 20px 56px 90px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .faq-card {
+        background: white;
+        border: 1px solid #e3ebe5;
+        border-radius: 26px;
+        padding: 34px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04);
+      }
+
+      .faq-card h2 {
+        font-size: 1.45rem;
+        margin-bottom: 14px;
+        line-height: 1.2;
+      }
+
+      .faq-card p {
+        color: #5a685f;
+        line-height: 1.8;
+        font-size: 1.03rem;
+      }
+
+      .wide {
+        grid-column: span 2;
+        background: linear-gradient(180deg, rgba(241, 251, 243, 0.92), white);
+        border-color: #d8eedc;
+      }
+
+      .footer {
+        max-width: 1350px;
+        margin: 0 auto 70px;
+        padding: 0 56px;
+      }
+
+      .footer-box {
+        background: linear-gradient(135deg, #066728, #08722f);
+        border-radius: 30px;
+        padding: 42px;
+        color: white;
+      }
+
+      .footer-box h2 {
+        font-size: 2rem;
+        margin-bottom: 14px;
+      }
+
+      .footer-box p {
+        color: #d7f5dd;
+        line-height: 1.7;
+        max-width: 720px;
+        font-size: 1.05rem;
+      }
+
+      @media (max-width: 1100px) {
+        .nav {
+          padding: 0 22px;
+        }
+
+        .links,
+        .nav > .chrome-btn {
+          display: none;
+        }
+
+        .logo {
+          font-size: 1.8rem;
+          letter-spacing: -1px;
+        }
+
+        .logo-icon {
+          width: 40px;
+          height: 40px;
+        }
+
+        .hero {
+          padding: 50px 22px 20px;
+        }
+
+        .faq-grid {
+          padding: 20px 22px 50px;
+          grid-template-columns: 1fr;
+        }
+
+        .wide {
+          grid-column: span 1;
+        }
+
+        .footer {
+          padding: 0 22px;
+        }
+
+        h1 {
+          font-size: 4rem;
+          letter-spacing: -3px;
+        }
+      }
+
+      @media (max-width: 700px) {
+        h1 {
+          font-size: 3.2rem;
+        }
+
+        .hero p {
+          font-size: 1.08rem;
+        }
+
+        .faq-card {
+          padding: 26px;
+        }
+
+        .footer-box {
+          padding: 30px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="nav">
+      <a class="logo" href="index.html">
+        <div class="logo-icon">♞</div>
+        Bronco<span>Sort</span>
+      </a>
+
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="schools.html">Schools</a>
+        <a href="request-school.html">Request School</a>
+        <a href="premium.html">Premium</a>
+        <a href="privacy.html">Privacy</a>
+        <a class="active" href="faq.html">FAQ</a>
+      </div>
+
+      <a
+        class="chrome-btn"
+        href="https://chromewebstore.google.com/detail/broncosort/iimoegnkdjicpamkelchhfcibglblmnh?authuser=0&hl=en"
+        target="_blank"
+      >
+        Add to Chrome
+      </a>
+    </header>
+
+    <section class="hero">
+      <div class="badge">❓ Frequently Asked Questions</div>
+
+      <h1>
+        Questions,<br />
+        answered.
+      </h1>
+
+      <p>
+        BroncoSort helps students choose better professors by bringing
+        RateMyProfessors ratings directly into supported registration pages.
+        Here are answers to the most common questions.
+      </p>
+    </section>
+
+    <section class="faq-grid">
+      <div class="faq-card wide">
+        <h2>What does BroncoSort do?</h2>
+
+        <p>
+          BroncoSort adds RateMyProfessors ratings directly into supported
+          registration pages and automatically sorts class sections by
+          highest-rated professors.
+        </p>
+      </div>
+
+      <div class="faq-card">
+        <h2>Which schools are supported?</h2>
+
+        <p>
+          Cal Poly Pomona is currently supported. Additional CSU, UC, and
+          community college campuses can request support directly through the
+          extension.
+        </p>
+      </div>
+
+      <div class="faq-card">
+        <h2>Is BroncoSort free?</h2>
+
+        <p>Yes. BroncoSort is completely free to install and use.</p>
+      </div>
+
+      <div class="faq-card">
+        <h2>Does BroncoSort collect personal information?</h2>
+
+        <p>
+          BroncoSort minimizes data collection and does not collect passwords,
+          payment information, emails, or browsing history outside supported
+          school pages.
+        </p>
+      </div>
+
+      <div class="faq-card">
+        <h2>Why does the extension need page access?</h2>
+
+        <p>
+          BroncoSort needs access to supported registration pages so it can
+          detect professor names, display ratings, and sort course sections.
+        </p>
+      </div>
+
+      <div class="faq-card">
+        <h2>How do school requests work?</h2>
+
+        <p>
+          Students can request support for unsupported campuses directly inside
+          the extension. Requests help improve compatibility for additional
+          schools.
+        </p>
+      </div>
+
+      <div class="faq-card">
+        <h2>Is BroncoSort affiliated with RateMyProfessors?</h2>
+
+        <p>
+          No. BroncoSort uses publicly available professor rating information
+          but is not affiliated with RateMyProfessors.
+        </p>
+      </div>
+
+      <div class="faq-card">
+        <h2>Why are some professors missing ratings?</h2>
+
+        <p>
+          Some professors may not have reviews available on RateMyProfessors
+          yet, or their names may not match existing listings.
+        </p>
+      </div>
+
+      <div class="faq-card wide">
+        <h2>Having issues or want to suggest a feature?</h2>
+
+        <p>
+          Feedback helps improve BroncoSort. Please leave feedback through the
+          Chrome Web Store listing or future support channels as the project
+          expands.
+        </p>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="footer-box">
+        <h2>More schools are coming.</h2>
+
+        <p>
+          BroncoSort is expanding support across California universities and
+          community colleges. Students can help prioritize campuses by
+          requesting their school directly through the extension.
+        </p>
+      </div>
+    </section>
+  </body>
+</html>

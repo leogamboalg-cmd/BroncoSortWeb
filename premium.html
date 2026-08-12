@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium | BroncoSort</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="runtime-config.js"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --green: #0a7a35;
+        --green2: #18a94b;
+        --text: #08140c;
+        --muted: #5b6a61;
+        --bg: #f5faf6;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(22, 163, 74, 0.12),
+            transparent 0 32%
+          ),
+          var(--bg);
+      }
+
+      .nav {
+        height: 92px;
+        padding: 0 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+        color: var(--text);
+        font-size: 2.3rem;
+        font-weight: 900;
+        letter-spacing: -2px;
+      }
+
+      .logo span {
+        color: var(--green2);
+      }
+
+      .logo-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #18a94b, #08722f);
+        color: white;
+        box-shadow: 0 12px 30px rgba(10, 122, 53, 0.18);
+      }
+
+      .links {
+        display: flex;
+        gap: 38px;
+      }
+
+      .links a {
+        text-decoration: none;
+        color: #142319;
+        font-weight: 800;
+        position: relative;
+      }
+
+      .links .active {
+        color: var(--green);
+      }
+
+      .links .active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -12px;
+        height: 3px;
+        border-radius: 999px;
+        background: var(--green2);
+      }
+
+      .chrome-btn {
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(135deg, #16a34a, #08722f);
+        padding: 16px 24px;
+        border-radius: 14px;
+        font-weight: 800;
+        box-shadow: 0 16px 30px rgba(10, 122, 53, 0.18);
+      }
+
+      .hero {
+        max-width: 1500px;
+        margin: auto;
+        padding: 90px 56px 70px;
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 22px;
+        border-radius: 999px;
+        background: #def6e3;
+        color: #08732f;
+        font-weight: 800;
+      }
+
+      h1 {
+        margin-top: 28px;
+        font-size: 5.8rem;
+        line-height: 0.92;
+        letter-spacing: -5px;
+        font-weight: 900;
+      }
+
+      h1 span {
+        color: var(--green2);
+      }
+
+      .hero-copy {
+        margin-top: 28px;
+        color: var(--muted);
+        font-size: 1.35rem;
+        line-height: 1.7;
+        max-width: 650px;
+      }
+
+      .trust-row {
+        margin-top: 28px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 22px;
+        color: var(--green);
+        font-weight: 800;
+      }
+
+      .pricing-card {
+        position: relative;
+        background: white;
+        border-radius: 28px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        box-shadow: 0 35px 80px rgba(0, 0, 0, 0.08);
+      }
+
+      .pricing-top {
+        height: 72px;
+        background: linear-gradient(135deg, #066b2a, #08772f);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 28px;
+        color: white;
+        font-weight: 800;
+      }
+
+      .pricing-content {
+        padding: 30px;
+      }
+
+      .plan-name {
+        font-size: 1.9rem;
+        font-weight: 900;
+        letter-spacing: -1px;
+      }
+
+      .plan-subtitle {
+        margin-top: 8px;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .price {
+        margin-top: 24px;
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+      }
+
+      .price strong {
+        font-size: 4rem;
+        line-height: 1;
+        letter-spacing: -3px;
+      }
+
+      .price span {
+        color: var(--muted);
+        font-weight: 700;
+        padding-bottom: 8px;
+      }
+
+      .features {
+        list-style: none;
+        display: grid;
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .features li {
+        display: flex;
+        gap: 12px;
+        color: #405046;
+        line-height: 1.55;
+      }
+
+      .check {
+        width: 26px;
+        height: 26px;
+        flex: 0 0 26px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #def6e3;
+        color: var(--green);
+        font-weight: 900;
+      }
+
+      .auth-box {
+        margin-top: 28px;
+        padding-top: 26px;
+        border-top: 1px solid #e5ebe6;
+      }
+
+      .auth-box h2 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+
+      .auth-box p {
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+
+      #googleButton {
+        margin-top: 18px;
+        min-height: 44px;
+      }
+
+      .account-card {
+        display: none;
+        margin-top: 18px;
+        padding: 14px;
+        align-items: center;
+        gap: 12px;
+        border-radius: 16px;
+        border: 1px solid #d6eedc;
+        background: #f1fbf3;
+      }
+
+      .account-card.visible {
+        display: flex;
+      }
+
+      .account-card img {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .account-text {
+        min-width: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .account-text strong,
+      .account-text span {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .account-text span {
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .account-text .premium-expiration {
+        margin-top: 3px;
+        color: var(--green);
+        font-weight: 700;
+      }
+
+      .buy-btn,
+      .signout-btn {
+        width: 100%;
+        border: 0;
+        cursor: pointer;
+        font-family: inherit;
+        font-weight: 800;
+        border-radius: 14px;
+      }
+
+      .buy-btn {
+        margin-top: 16px;
+        padding: 17px 22px;
+        color: white;
+        background: linear-gradient(135deg, #16a34a, #08722f);
+        box-shadow: 0 16px 30px rgba(10, 122, 53, 0.18);
+      }
+
+      .buy-btn:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+
+      .signout-btn {
+        margin-top: 10px;
+        padding: 13px 18px;
+        color: #304438;
+        background: #eef5ef;
+      }
+
+      .status {
+        min-height: 22px;
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .status.error {
+        color: #b42318;
+      }
+
+      .content {
+        max-width: 1500px;
+        margin: auto;
+        padding: 10px 56px 90px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .card {
+        background: white;
+        border: 1px solid #e3ebe5;
+        border-radius: 24px;
+        padding: 34px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04);
+      }
+
+      .card h2 {
+        font-size: 1.45rem;
+        margin-bottom: 14px;
+      }
+
+      .card p {
+        color: #5a685f;
+        line-height: 1.75;
+        font-size: 1.03rem;
+      }
+
+      .card-icon {
+        font-size: 2rem;
+        margin-bottom: 18px;
+      }
+
+      .wide {
+        grid-column: span 3;
+        background: linear-gradient(180deg, rgba(241, 251, 243, 0.92), white);
+        border-color: #d8eedc;
+      }
+
+      .faq-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      details {
+        background: white;
+        border: 1px solid #e3ebe5;
+        border-radius: 18px;
+        padding: 0 22px;
+      }
+
+      summary {
+        cursor: pointer;
+        padding: 22px 0;
+        font-size: 1.05rem;
+        font-weight: 800;
+      }
+
+      details p {
+        padding: 0 0 22px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      @media (max-width: 1150px) {
+        .nav {
+          padding: 0 22px;
+        }
+
+        .links,
+        .nav > .chrome-btn {
+          display: none;
+        }
+
+        .logo {
+          font-size: 1.8rem;
+          letter-spacing: -1px;
+        }
+
+        .logo-icon {
+          width: 40px;
+          height: 40px;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          padding: 50px 22px 40px;
+        }
+
+        h1 {
+          font-size: 4rem;
+          letter-spacing: -3px;
+        }
+
+        .content {
+          padding: 20px 22px 50px;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .wide {
+          grid-column: span 1;
+        }
+      }
+
+      @media (max-width: 700px) {
+        h1 {
+          font-size: 3.2rem;
+        }
+
+        .hero-copy {
+          font-size: 1.08rem;
+        }
+
+        .pricing-content {
+          padding: 24px;
+        }
+
+        .card {
+          padding: 26px;
+        }
+
+        .price strong {
+          font-size: 3.3rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="nav">
+      <a class="logo" href="index.html">
+        <div class="logo-icon">♞</div>
+        Bronco<span>Sort</span>
+      </a>
+
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="schools.html">Schools</a>
+        <a href="request-school.html">Request School</a>
+        <a class="active" href="premium.html">Premium</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+
+      <a
+        class="chrome-btn"
+        href="https://chromewebstore.google.com/detail/broncosort/iimoegnkdjicpamkelchhfcibglblmnh?authuser=0&hl=en"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Add to Chrome
+      </a>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="badge">✦ Built for smarter registration</div>
+
+        <h1>
+          Get more from<br />
+          every <span>class search.</span>
+        </h1>
+
+        <p class="hero-copy">
+          BroncoSort Premium adds AI professor summaries, faster decision tools,
+          and account-based access across supported schools.
+        </p>
+
+        <div class="trust-row">
+          <span>✓ Secure Google sign-in</span>
+          <span>✓ Stripe checkout</span>
+          <span>✓ Account-based access</span>
+        </div>
+      </div>
+
+      <article class="pricing-card">
+        <div class="pricing-top">
+          <span>BroncoSort Premium</span>
+          <span>Most Popular</span>
+        </div>
+
+        <div class="pricing-content">
+          <div class="plan-name">Choose classes with more confidence.</div>
+
+          <p class="plan-subtitle">
+            Premium tools built directly around the way students register.
+          </p>
+
+          <div class="price">
+            <strong>$4.99</strong>
+            <span>/ per semester</span>
+          </div>
+
+          <ul class="features">
+            <li>
+              <span class="check">✓</span>
+              <span
+                ><strong>AI professor summaries</strong> with clear pros, cons,
+                and teaching-style insights.</span
+              >
+            </li>
+            <li>
+              <span class="check">✓</span>
+              <span
+                ><strong>Premium schedule tools</strong> for faster comparisons
+                and planning.</span
+              >
+            </li>
+            <li>
+              <span class="check">✓</span>
+              <span
+                ><strong>Canvas calendar setup</strong> when available for your
+                school.</span
+              >
+            </li>
+            <li>
+              <span class="check">✓</span>
+              <span
+                ><strong>Future premium updates</strong> tied to your BroncoSort
+                account.</span
+              >
+            </li>
+          </ul>
+
+          <div class="auth-box">
+            <h2>Continue with your Google account</h2>
+            <p>
+              Google securely verifies your identity so Premium can be linked to
+              the correct BroncoSort account. BroncoSort never receives your
+              Google password.
+            </p>
+
+            <div id="signedInUser" class="account-card">
+              <img id="userPicture" alt="" />
+              <div class="account-text">
+                <strong id="userName"></strong>
+                <span id="userEmail"></span>
+                <span
+                  id="premiumExpiration"
+                  class="premium-expiration hidden"
+                ></span>
+              </div>
+            </div>
+
+            <div id="googleButton"></div>
+
+            <button id="checkoutButton" class="buy-btn hidden" type="button">
+              Buy BroncoSort Premium
+            </button>
+
+            <button id="signOutButton" class="signout-btn hidden" type="button">
+              Use a different Google account
+            </button>
+
+            <p id="statusMessage" class="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <main class="content">
+      <section class="grid">
+        <div class="card">
+          <div class="card-icon">🧠</div>
+          <h2>Understand professors faster</h2>
+          <p>
+            Turn long review histories into useful summaries that are easier to
+            scan before registration.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h2>Make decisions quickly</h2>
+          <p>
+            Compare the details that matter without opening a dozen tabs or
+            reading every individual review.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h2>Account-based access</h2>
+          <p>
+            Premium is attached to your verified account and confirmed by the
+            BroncoSort backend.
+          </p>
+        </div>
+
+        <div class="card wide">
+          <h2>Premium questions</h2>
+
+          <div class="faq-list">
+            <details>
+              <summary>How is my purchase connected to my account?</summary>
+              <p>
+                You sign in with Google, BroncoSort verifies the signed ID token
+                on the backend, and Stripe Checkout is created for that verified
+                account.
+              </p>
+            </details>
+
+            <details>
+              <summary>Does BroncoSort receive my Google password?</summary>
+              <p>
+                No. Google handles the sign-in. BroncoSort only receives a
+                signed identity token that the backend verifies.
+              </p>
+            </details>
+
+            <details>
+              <summary>When does Premium activate?</summary>
+              <p>
+                Premium activates only after Stripe confirms payment through the
+                signed webhook. The checkout success page does not grant access
+                by itself.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const CONFIG = {
+        GOOGLE_WEB_CLIENT_ID:
+          "499074389596-v40u6b39i7kskbrt08q0gtk413f160b9.apps.googleusercontent.com",
+        API_BASE_URL: globalThis.BroncoSortConfig.apiBaseUrl,
+      };
+
+      let broncoSortToken = null;
+
+      const googleButton = document.getElementById("googleButton");
+      const checkoutButton = document.getElementById("checkoutButton");
+      const signOutButton = document.getElementById("signOutButton");
+      const statusMessage = document.getElementById("statusMessage");
+      const signedInUser = document.getElementById("signedInUser");
+      const userPicture = document.getElementById("userPicture");
+      const userName = document.getElementById("userName");
+      const userEmail = document.getElementById("userEmail");
+      const premiumExpiration = document.getElementById("premiumExpiration");
+
+      function setStatus(message, isError = false) {
+        statusMessage.textContent = message;
+        statusMessage.classList.toggle("error", isError);
+      }
+
+      function formatPremiumExpiration(value) {
+        const date = new Date(value);
+
+        if (!value || Number.isNaN(date.getTime())) {
+          return "";
+        }
+
+        return new Intl.DateTimeFormat("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        }).format(date);
+      }
+
+      function showSignedIn(user) {
+        userName.textContent = user.name || "BroncoSort user";
+        userEmail.textContent = user.email || "";
+
+        const expirationDate = formatPremiumExpiration(user.premiumExpiresAt);
+
+        if (user.isPremium && expirationDate) {
+          premiumExpiration.textContent = `Premium active until ${expirationDate}`;
+          premiumExpiration.classList.remove("hidden");
+        } else {
+          premiumExpiration.textContent = "";
+          premiumExpiration.classList.add("hidden");
+        }
+
+        if (user.picture) {
+          userPicture.src = user.picture;
+          userPicture.alt = `${user.name || "User"} profile picture`;
+          userPicture.classList.remove("hidden");
+        } else {
+          userPicture.classList.add("hidden");
+        }
+
+        signedInUser.classList.add("visible");
+        googleButton.classList.add("hidden");
+        checkoutButton.classList.remove("hidden");
+        signOutButton.classList.remove("hidden");
+
+        checkoutButton.textContent = user.isPremium
+          ? "Premium already active"
+          : "Buy BroncoSort Premium";
+
+        checkoutButton.disabled = Boolean(user.isPremium);
+      }
+
+      function showSignedOut() {
+        broncoSortToken = null;
+        sessionStorage.removeItem("broncosortToken");
+        sessionStorage.removeItem("broncosortUser");
+
+        signedInUser.classList.remove("visible");
+        googleButton.classList.remove("hidden");
+        checkoutButton.classList.add("hidden");
+        signOutButton.classList.add("hidden");
+      }
+
+      async function fetchCurrentUser() {
+        if (!broncoSortToken) {
+          throw new Error("Sign in to check your account.");
+        }
+
+        const response = await fetch(`${CONFIG.API_BASE_URL}/api/users/me`, {
+          headers: {
+            Authorization: `Bearer ${broncoSortToken}`,
+          },
+        });
+
+        let data;
+
+        try {
+          data = await response.json();
+        } catch {
+          throw new Error("The account service returned an invalid response.");
+        }
+
+        if (!response.ok) {
+          if (response.status === 401) {
+            showSignedOut();
+          }
+
+          throw new Error(data.error || "Unable to refresh your account.");
+        }
+
+        if (!data.user) {
+          throw new Error("The account service did not return a user.");
+        }
+
+        sessionStorage.setItem("broncosortUser", JSON.stringify(data.user));
+        showSignedIn(data.user);
+
+        return data.user;
+      }
+
+      async function handleGoogleCredential(response) {
+        try {
+          setStatus("Verifying your Google account...");
+
+          const authResponse = await fetch(
+            `${CONFIG.API_BASE_URL}/api/auth/google`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                credential: response.credential,
+              }),
+            },
+          );
+
+          const data = await authResponse.json();
+
+          if (!authResponse.ok) {
+            throw new Error(data.error || "Google sign-in failed.");
+          }
+
+          broncoSortToken = data.token;
+
+          sessionStorage.setItem("broncosortToken", data.token);
+          const currentUser = await fetchCurrentUser();
+
+          setStatus(
+            currentUser.isPremium
+              ? "Premium is already active on this account."
+              : "Account verified. You can continue to checkout.",
+          );
+        } catch (error) {
+          console.error("Authentication error:", error);
+          setStatus(error.message || "Unable to sign in.", true);
+        }
+      }
+
+      async function startCheckout() {
+        if (!broncoSortToken) {
+          setStatus("Sign in before starting checkout.", true);
+          return;
+        }
+
+        try {
+          checkoutButton.disabled = true;
+          checkoutButton.textContent = "Opening secure checkout...";
+          setStatus("Creating your Stripe Checkout session...");
+
+          const response = await fetch(
+            `${CONFIG.API_BASE_URL}/api/checkout/create-checkout-session`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${broncoSortToken}`,
+              },
+            },
+          );
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.error || "Unable to create checkout session.");
+          }
+
+          if (!data.url) {
+            throw new Error("The backend did not return a checkout URL.");
+          }
+
+          window.location.assign(data.url);
+        } catch (error) {
+          console.error("Checkout error:", error);
+          checkoutButton.disabled = false;
+          checkoutButton.textContent = "Buy BroncoSort Premium";
+          setStatus(error.message || "Unable to start checkout.", true);
+        }
+      }
+
+      function initializeGoogleSignIn() {
+        if (
+          !CONFIG.GOOGLE_WEB_CLIENT_ID ||
+          CONFIG.GOOGLE_WEB_CLIENT_ID.includes("PASTE_YOUR")
+        ) {
+          setStatus(
+            "Add your Google Web client ID in premium.html before testing sign-in.",
+            true,
+          );
+          return;
+        }
+
+        google.accounts.id.initialize({
+          client_id: CONFIG.GOOGLE_WEB_CLIENT_ID,
+          callback: handleGoogleCredential,
+          auto_select: false,
+        });
+
+        google.accounts.id.renderButton(googleButton, {
+          theme: "outline",
+          size: "large",
+          shape: "rectangular",
+          width: 360,
+          text: "continue_with",
+        });
+      }
+
+      async function restoreSession() {
+        const savedToken = sessionStorage.getItem("broncosortToken");
+
+        if (!savedToken) {
+          return null;
+        }
+
+        broncoSortToken = savedToken;
+
+        try {
+          return await fetchCurrentUser();
+        } catch (error) {
+          console.error("Session refresh error:", error);
+          setStatus(error.message || "Unable to refresh your account.", true);
+          return null;
+        }
+      }
+
+      checkoutButton.addEventListener("click", startCheckout);
+
+      signOutButton.addEventListener("click", () => {
+        showSignedOut();
+        checkoutButton.disabled = false;
+        checkoutButton.textContent = "Buy BroncoSort Premium";
+        setStatus("Signed out.");
+
+        if (window.google?.accounts?.id) {
+          google.accounts.id.disableAutoSelect();
+        }
+      });
+
+      window.addEventListener("load", async () => {
+        initializeGoogleSignIn();
+
+        const params = new URLSearchParams(window.location.search);
+        const paymentSucceeded = params.get("payment") === "success";
+        const user = await restoreSession();
+
+        if (paymentSucceeded && user?.isPremium === true) {
+          setStatus("Premium is already active on this account.");
+        }
+      });
+    </script>
+  </body>
+</html>

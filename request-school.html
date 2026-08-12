@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request a School | BroncoSort</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --green: #0a7a35;
+        --green2: #18a94b;
+        --text: #08140c;
+        --muted: #5b6a61;
+        --bg: #f5faf6;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(22, 163, 74, 0.12),
+            transparent 0 30%
+          ),
+          var(--bg);
+      }
+
+      .nav {
+        height: 92px;
+        padding: 0 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+        color: var(--text);
+        font-size: 2.3rem;
+        font-weight: 900;
+        letter-spacing: -2px;
+      }
+
+      .logo span {
+        color: var(--green2);
+      }
+
+      .logo-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #18a94b, #08722f);
+        color: white;
+      }
+
+      .links {
+        display: flex;
+        gap: 34px;
+      }
+
+      .links a {
+        text-decoration: none;
+        color: #142319;
+        font-weight: 800;
+        position: relative;
+      }
+
+      .links .active {
+        color: var(--green);
+      }
+
+      .links .active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -12px;
+        height: 3px;
+        border-radius: 999px;
+        background: var(--green2);
+      }
+
+      .chrome-btn {
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(135deg, #16a34a, #08722f);
+        padding: 16px 24px;
+        border-radius: 14px;
+        font-weight: 800;
+      }
+
+      .hero {
+        max-width: 1500px;
+        margin: auto;
+        padding: 86px 56px 60px;
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 60px;
+        align-items: start;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 22px;
+        border-radius: 999px;
+        background: #def6e3;
+        color: #08732f;
+        font-weight: 800;
+      }
+
+      h1 {
+        margin-top: 28px;
+        font-size: 5.2rem;
+        line-height: 0.92;
+        letter-spacing: -5px;
+        font-weight: 900;
+      }
+
+      .hero p {
+        margin-top: 28px;
+        color: var(--muted);
+        font-size: 1.25rem;
+        line-height: 1.7;
+        max-width: 620px;
+      }
+
+      .real-guide {
+        display: grid;
+        gap: 22px;
+      }
+
+      .guide-step {
+        background: white;
+        border: 1px solid #e3ebe5;
+        border-radius: 28px;
+        padding: 24px;
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 24px;
+        align-items: center;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.05);
+      }
+
+      .guide-step.reverse {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+
+      .guide-step img {
+        width: 100%;
+        max-height: 330px;
+        object-fit: contain;
+        border-radius: 18px;
+        border: 1px solid #dde7df;
+        background: #0b1220;
+        display: block;
+      }
+
+      .guide-text span {
+        display: inline-flex;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: #def6e3;
+        color: #08732f;
+        font-weight: 900;
+        margin-bottom: 18px;
+      }
+
+      .guide-text h3 {
+        font-size: 1.8rem;
+        line-height: 1.08;
+        margin-bottom: 14px;
+      }
+
+      .guide-text p {
+        margin: 0;
+        color: #5b6a61;
+        line-height: 1.7;
+        font-size: 1.02rem;
+      }
+
+      .steps-wrap {
+        max-width: 1500px;
+        margin: auto;
+        padding: 0 56px 90px;
+      }
+
+      .notice {
+        background: linear-gradient(135deg, #066728, #08722f);
+        color: white;
+        border-radius: 30px;
+        padding: 42px;
+      }
+
+      .notice h2 {
+        font-size: 2rem;
+        margin-bottom: 14px;
+      }
+
+      .notice p {
+        color: #d7f5dd;
+        line-height: 1.7;
+        max-width: 850px;
+      }
+
+      @media (max-width: 1150px) {
+        .nav {
+          padding: 0 22px;
+        }
+
+        .links,
+        .nav > .chrome-btn {
+          display: none;
+        }
+
+        .logo {
+          font-size: 1.8rem;
+          letter-spacing: -1px;
+        }
+
+        .logo-icon {
+          width: 40px;
+          height: 40px;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 50px 22px 38px;
+        }
+
+        h1 {
+          font-size: 4rem;
+          letter-spacing: -3px;
+        }
+
+        .guide-step,
+        .guide-step.reverse {
+          grid-template-columns: 1fr;
+        }
+
+        .steps-wrap {
+          padding: 0 22px 55px;
+        }
+      }
+
+      @media (max-width: 700px) {
+        h1 {
+          font-size: 3.2rem;
+        }
+
+        .hero p {
+          font-size: 1.08rem;
+        }
+
+        .guide-step,
+        .notice {
+          padding: 24px;
+        }
+
+        .guide-text h3 {
+          font-size: 1.45rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="nav">
+      <a class="logo" href="index.html">
+        <div class="logo-icon">♞</div>
+        Bronco<span>Sort</span>
+      </a>
+
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="schools.html">Schools</a>
+        <a class="active" href="request-school.html">Request School</a>
+        <a href="premium.html">Premium</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+
+      <a
+        class="chrome-btn"
+        href="https://chromewebstore.google.com/detail/broncosort/iimoegnkdjicpamkelchhfcibglblmnh?authuser=0&hl=en"
+        target="_blank"
+      >
+        Add to Chrome
+      </a>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="badge">🏫 Request Access</div>
+
+        <h1>
+          Request your<br />
+          school.
+        </h1>
+
+        <p>
+          BroncoSort currently supports Cal Poly Pomona. If your school is not
+          supported yet, request access directly from the extension while you
+          are on your school’s registration page.
+        </p>
+
+        <p style="margin-top: 18px; font-weight: 800; color: #0a7a35">
+          You must have already searched for a class before submitting a
+          request.
+        </p>
+      </div>
+
+      <div class="real-guide">
+        <div class="guide-step">
+          <div class="guide-text">
+            <span>Step 1</span>
+            <h3>Open BroncoSort from Chrome</h3>
+            <p>
+              Click the extensions icon, then open BroncoSort while you are on
+              your school registration page.
+            </p>
+          </div>
+
+          <img
+            src="assets/images/RequestSchool.png"
+            alt="Open BroncoSort from Chrome"
+          />
+        </div>
+
+        <div class="guide-step reverse">
+          <img
+            src="assets/images/RequestSchool2.png"
+            alt="Search for your school in BroncoSort"
+          />
+
+          <div class="guide-text">
+            <span>Step 2</span>
+            <h3>Search for your school</h3>
+            <p>
+              Type your school name and select the correct campus from the
+              dropdown.
+            </p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="guide-text">
+            <span>Step 3</span>
+            <h3>Submit the request</h3>
+            <p>
+              Click “Request My School.” BroncoSort sends the cleaned page
+              structure so support can be reviewed.
+            </p>
+          </div>
+
+          <img
+            src="assets/images/Submitted.png"
+            alt="Request submitted in BroncoSort"
+          />
+        </div>
+      </div>
+    </section>
+
+    <main class="steps-wrap">
+      <section class="notice">
+        <h2>Why requests must come from the registration page</h2>
+
+        <p>
+          Every school registration system is structured differently. Submitting
+          requests directly from the registration page helps BroncoSort
+          understand the page layout, identify professor listings correctly, and
+          build support for that campus faster.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

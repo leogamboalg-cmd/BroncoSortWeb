@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schools | BroncoSort</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(22, 163, 74, 0.12),
+            transparent 0 30%
+          ),
+          #f6faf7;
+        color: #07150d;
+      }
+
+      .nav {
+        height: 92px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 56px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(12px);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 2.3rem;
+        font-weight: 900;
+        letter-spacing: -2px;
+        text-decoration: none;
+        color: #07150d;
+      }
+
+      .logo span {
+        color: #18a94b;
+      }
+
+      .logo-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #19a34a, #08732f);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.1rem;
+        box-shadow: 0 12px 30px rgba(11, 122, 53, 0.22);
+      }
+
+      .links {
+        display: flex;
+        gap: 38px;
+      }
+
+      .links a {
+        text-decoration: none;
+        color: #122118;
+        font-weight: 800;
+        position: relative;
+      }
+
+      .links .active {
+        color: #0a7a35;
+      }
+
+      .links .active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -12px;
+        height: 3px;
+        border-radius: 999px;
+        background: #18a94b;
+      }
+
+      .chrome-btn {
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(135deg, #16a34a, #08722f);
+        padding: 16px 26px;
+        border-radius: 14px;
+        font-weight: 800;
+        box-shadow: 0 18px 34px rgba(10, 122, 53, 0.18);
+      }
+
+      .page {
+        max-width: 1300px;
+        margin: auto;
+        padding: 90px 40px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #def6e3;
+        color: #08732f;
+        padding: 14px 22px;
+        border-radius: 999px;
+        font-weight: 800;
+      }
+
+      h1 {
+        margin-top: 28px;
+        font-size: 5rem;
+        line-height: 0.92;
+        letter-spacing: -4px;
+        font-weight: 900;
+      }
+
+      .intro {
+        margin-top: 28px;
+        font-size: 1.3rem;
+        line-height: 1.7;
+        color: #536258;
+        max-width: 760px;
+      }
+
+      .schools {
+        margin-top: 56px;
+        display: grid;
+        gap: 22px;
+      }
+
+      .school-card {
+        background: white;
+        border: 1px solid #e2ebe4;
+        border-radius: 24px;
+        padding: 30px;
+        display: flex;
+        justify-content: space-between;
+        gap: 28px;
+        align-items: flex-start;
+        box-shadow: 0 16px 38px rgba(0, 0, 0, 0.04);
+      }
+
+      .school-card h2 {
+        font-size: 1.45rem;
+        margin-bottom: 12px;
+      }
+
+      .school-card p {
+        color: #5f6f65;
+        line-height: 1.65;
+        max-width: 760px;
+      }
+
+      .status {
+        padding: 11px 15px;
+        border-radius: 999px;
+        font-weight: 800;
+        white-space: nowrap;
+        font-size: 0.95rem;
+      }
+
+      .supported-badge {
+        background: #e8f8eb;
+        color: #08732f;
+      }
+
+      .request-badge {
+        background: #f2f5f3;
+        color: #516157;
+      }
+
+      .school-card.supported {
+        border-color: rgba(10, 122, 53, 0.2);
+        box-shadow: 0 16px 40px rgba(10, 122, 53, 0.08);
+      }
+
+      .footer-note {
+        margin-top: 60px;
+        background: linear-gradient(135deg, #066728, #08732f);
+        color: white;
+        border-radius: 30px;
+        padding: 42px;
+      }
+
+      .footer-note h2 {
+        font-size: 2rem;
+        margin-bottom: 14px;
+      }
+
+      .footer-note p {
+        color: #d6f5dd;
+        line-height: 1.7;
+        max-width: 720px;
+      }
+
+      @media (max-width: 1100px) {
+        .nav {
+          padding: 0 22px;
+        }
+
+        .links,
+        .nav > .chrome-btn {
+          display: none;
+        }
+
+        .logo {
+          font-size: 1.8rem;
+          letter-spacing: -1px;
+        }
+
+        .logo-icon {
+          width: 40px;
+          height: 40px;
+        }
+
+        h1 {
+          font-size: 3.7rem;
+        }
+
+        .page {
+          padding: 50px 22px;
+        }
+
+        .school-card {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="nav">
+      <a class="logo" href="index.html">
+        <div class="logo-icon">♞</div>
+        Bronco<span>Sort</span>
+      </a>
+
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a class="active" href="schools.html">Schools</a>
+        <a href="request-school.html">Request School</a>
+        <a href="premium.html">Premium</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+
+      <a
+        class="chrome-btn"
+        href="https://chromewebstore.google.com/detail/broncosort/iimoegnkdjicpamkelchhfcibglblmnh?authuser=0&hl=en"
+        target="_blank"
+      >
+        Add to Chrome
+      </a>
+    </header>
+
+    <main class="page">
+      <div class="badge">★ School Support</div>
+
+      <h1>
+        Supported and<br />
+        requestable schools.
+      </h1>
+
+      <p class="intro">
+        BroncoSort currently supports Cal Poly Pomona. Students at other
+        campuses can still request support directly through the extension while
+        compatibility expands across California universities and community
+        colleges.
+      </p>
+
+      <section class="schools">
+        <div class="school-card supported">
+          <div>
+            <h2>Cal Poly Pomona</h2>
+
+            <p>
+              Professor ratings, RateMyProfessors integration, and automatic
+              section sorting are currently supported.
+            </p>
+          </div>
+
+          <div class="status supported-badge">Supported</div>
+        </div>
+
+        <div class="school-card">
+          <div>
+            <h2>California State University Campuses</h2>
+
+            <p>
+              Cal State Long Beach, Cal State Dominguez Hills, Cal State East
+              Bay, Fresno State, Cal State Fullerton, Cal Poly Humboldt, Cal
+              State LA, Cal Maritime, CSU Monterey Bay, Cal State Northridge,
+              Sacramento State, Cal State San Bernardino, San Diego State, San
+              Francisco State, San Jose State, Sonoma State, and Cal Poly San
+              Luis Obispo.
+            </p>
+          </div>
+
+          <div class="status request-badge">Request access</div>
+        </div>
+
+        <div class="school-card">
+          <div>
+            <h2>University of California Campuses</h2>
+
+            <p>
+              UC Berkeley, UC Davis, UC Irvine, UCLA, UC Riverside, UC Merced,
+              UC Santa Barbara, UC Santa Cruz, UC San Diego, and UCSF.
+            </p>
+          </div>
+
+          <div class="status request-badge">Request access</div>
+        </div>
+
+        <div class="school-card">
+          <div>
+            <h2>San Gabriel Valley Community Colleges</h2>
+
+            <p>
+              Mt. San Antonio College, Citrus College, Rio Hondo College,
+              Chaffey College, Pasadena City College, Glendale Community
+              College, East Los Angeles College, and Cerritos College.
+            </p>
+          </div>
+
+          <div class="status request-badge">Request access</div>
+        </div>
+
+        <div class="school-card">
+          <div>
+            <h2>Orange County Colleges</h2>
+
+            <p>
+              Fullerton College, Cypress College, Santa Ana College, Santiago
+              Canyon College, Irvine Valley College, Saddleback College, Orange
+              Coast College, OCC, and Golden West College.
+            </p>
+          </div>
+
+          <div class="status request-badge">Request access</div>
+        </div>
+
+        <div class="school-card">
+          <div>
+            <h2>Los Angeles Community Colleges</h2>
+
+            <p>
+              Long Beach City College, El Camino College, Santa Monica College,
+              Los Angeles City College, Los Angeles Trade-Technical College, Los
+              Angeles Valley College, LA Mission College, Pierce College, West
+              LA College, LA Harbor College, and LA Southwest College.
+            </p>
+          </div>
+
+          <div class="status request-badge">Request access</div>
+        </div>
+
+        <div class="school-card">
+          <div>
+            <h2>Riverside Community Colleges</h2>
+
+            <p>
+              Riverside City College, Moreno Valley College, and Norco College.
+            </p>
+          </div>
+
+          <div class="status request-badge">Request access</div>
+        </div>
+      </section>
+
+      <section class="footer-note">
+        <h2>Want your school supported next?</h2>
+
+        <p>
+          Open BroncoSort on your school registration page, search for your
+          campus inside the extension, and submit a request. Requests help
+          improve compatibility and expand support faster.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

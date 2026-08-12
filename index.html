@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BroncoSort</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --green: #0a7a35;
+        --green2: #18a94b;
+        --bg: #f7faf7;
+        --text: #07150d;
+        --muted: #5a695f;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background:
+          radial-gradient(
+            circle at 75% 35%,
+            rgba(22, 163, 74, 0.14),
+            transparent 0 24%
+          ),
+          linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f5faf6 72%,
+            #005f26 72%,
+            #00501f 100%
+          );
+        color: var(--text);
+        overflow-x: hidden;
+      }
+
+      .nav {
+        height: 92px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 56px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 2.4rem;
+        font-weight: 900;
+        letter-spacing: -2px;
+      }
+
+      .logo span {
+        color: var(--green2);
+      }
+
+      .logo-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #19a34a, #08732f);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+        box-shadow: 0 12px 30px rgba(11, 122, 53, 0.22);
+      }
+
+      .links {
+        display: flex;
+        gap: 38px;
+      }
+
+      .links a {
+        text-decoration: none;
+        color: #122118;
+        font-weight: 700;
+        position: relative;
+      }
+
+      .links a:first-child::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -12px;
+        height: 3px;
+        border-radius: 999px;
+        background: var(--green2);
+      }
+
+      .chrome-btn {
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(135deg, #16a34a, #08722f);
+        padding: 16px 26px;
+        border-radius: 14px;
+        font-weight: 800;
+        box-shadow: 0 18px 34px rgba(10, 122, 53, 0.22);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .chrome-circle {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background:
+          radial-gradient(
+            circle at center,
+            #3b82f6 0 31%,
+            white 32% 44%,
+            transparent 45%
+          ),
+          conic-gradient(#ef4444 0 33%, #facc15 33% 66%, #22c55e 66% 100%);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 72px;
+        padding: 70px 56px;
+        align-items: center;
+        max-width: 1800px;
+        margin: auto;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #def6e3;
+        color: #08732f;
+        padding: 14px 22px;
+        border-radius: 999px;
+        font-weight: 800;
+      }
+
+      h1 {
+        margin-top: 30px;
+        font-size: 6rem;
+        line-height: 0.93;
+        letter-spacing: -5px;
+        font-weight: 900;
+      }
+
+      h1 span {
+        color: #16a34a;
+      }
+
+      .desc {
+        margin-top: 28px;
+        color: #39493f;
+        font-size: 1.45rem;
+        line-height: 1.6;
+        max-width: 640px;
+      }
+
+      .info-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        margin-top: 34px;
+        color: #0b6f31;
+        font-weight: 700;
+      }
+
+      .cta-row {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-top: 38px;
+      }
+
+      .free {
+        color: #0b6f31;
+        font-weight: 700;
+        position: relative;
+      }
+
+      .free::after {
+        content: "";
+      }
+
+      .student {
+        margin-top: 54px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: #0d1f13;
+      }
+
+      .student strong {
+        display: block;
+      }
+
+      .student span {
+        color: #4f6257;
+      }
+
+      .student-icon {
+        font-size: 2rem;
+        color: #11923d;
+      }
+
+      .mock {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 40px 90px rgba(0, 0, 0, 0.14);
+      }
+
+      .mock-top {
+        background: linear-gradient(135deg, #066b2a, #08782f);
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 26px;
+        color: white;
+        font-weight: 700;
+      }
+
+      .mock-content {
+        padding: 28px;
+      }
+
+      .course-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+
+      .course-head h2 {
+        font-size: 1.7rem;
+        letter-spacing: -1px;
+      }
+
+      .course-head p {
+        margin-top: 8px;
+        color: #0b7a33;
+      }
+
+      .course-head button {
+        border: none;
+        background: #edf8ef;
+        color: #0a6f31;
+        padding: 14px 20px;
+        border-radius: 12px;
+        font-weight: 800;
+      }
+
+      .table {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .thead,
+      .row {
+        display: grid;
+        grid-template-columns: 0.6fr 1.3fr 1.4fr 1.2fr 0.8fr 1fr;
+        align-items: center;
+      }
+
+      .thead {
+        background: #f2f5f2;
+        color: #516157;
+        font-size: 0.9rem;
+        font-weight: 700;
+        padding: 16px 20px;
+        border-radius: 6px;
+      }
+
+      .row {
+        border: 1px solid #e3e9e4;
+        border-radius: 12px;
+        padding: 18px 20px;
+        background: white;
+      }
+
+      .rating {
+        color: #0c8437;
+        font-weight: 900;
+      }
+
+      .rating em {
+        color: #49594f;
+        font-style: normal;
+        font-weight: 600;
+      }
+
+      .muted {
+        color: #88928c;
+        font-weight: 700;
+      }
+
+      .sorted {
+        margin-top: 22px;
+        background: #eef9f0;
+        color: #0a6f31;
+        border-radius: 12px;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+      }
+
+      .sorted strong {
+        margin-left: auto;
+      }
+
+      .bottom {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 80px;
+        padding: 46px 56px 54px;
+        color: white;
+        max-width: 1800px;
+        margin: auto;
+      }
+
+      .bottom div {
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        column-gap: 18px;
+      }
+
+      .bottom-icon {
+        font-size: 2rem;
+        color: #b8f5c7;
+      }
+
+      .bottom h3 {
+        font-size: 1.35rem;
+        margin-bottom: 10px;
+      }
+
+      .bottom p {
+        color: #d1f5d9;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 1300px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 4.8rem;
+        }
+
+        .bottom {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          padding: 0 22px;
+        }
+
+        .links {
+          display: none;
+        }
+
+        .hero {
+          padding: 38px 22px;
+        }
+
+        h1 {
+          font-size: 3.7rem;
+        }
+
+        .desc {
+          font-size: 1.1rem;
+        }
+
+        .cta-row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .mock {
+          overflow: auto;
+        }
+
+        .mock-content {
+          min-width: 760px;
+        }
+
+        .bottom {
+          padding: 38px 22px 46px;
+        }
+      }
+      .bottom {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 90px;
+        padding: 90px 120px 110px;
+        color: white;
+        max-width: 1800px;
+        margin: auto;
+      }
+
+      .bottom > div {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .bottom > div > div:last-child {
+        display: block;
+      }
+
+      .bottom-icon {
+        font-size: 2.3rem;
+        color: #b8f5c7;
+        line-height: 1;
+      }
+
+      .bottom h3 {
+        font-size: 1.55rem;
+        line-height: 1.12;
+        margin-bottom: 10px;
+        max-width: 190px;
+      }
+
+      .bottom p {
+        color: #d1f5d9;
+        font-size: 1.05rem;
+        line-height: 1.45;
+        max-width: 360px;
+      }
+
+      @media (max-width: 1100px) {
+        .nav {
+          padding: 0 22px;
+        }
+
+        .logo {
+          font-size: 1.8rem;
+          letter-spacing: -1px;
+          flex-shrink: 0;
+        }
+
+        .logo-icon {
+          width: 40px;
+          height: 40px;
+        }
+
+        .links {
+          display: none;
+        }
+
+        .nav > .chrome-btn {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="nav">
+      <div class="logo">
+        <div class="logo-icon">♞</div>
+        Bronco<span>Sort</span>
+      </div>
+
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="schools.html">Schools</a>
+        <a href="request-school.html">Request School</a>
+        <a class="active" href="premium.html">Premium</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+
+      <a
+        class="chrome-btn"
+        href="https://chromewebstore.google.com/detail/broncosort/iimoegnkdjicpamkelchhfcibglblmnh?authuser=0&hl=en"
+        target="_blank"
+      >
+        <div class="chrome-circle"></div>
+        Add to Chrome
+      </a>
+    </header>
+
+    <main class="hero">
+      <section>
+        <div class="badge">★ Made for Students</div>
+
+        <h1>
+          Sort your classes<br />
+          by what matters<br />
+          <span>most.</span>
+        </h1>
+
+        <p class="desc">
+          BroncoSort brings RateMyProfessors ratings directly to your school
+          registration page and sorts your class sections by highest-rated
+          professors.
+        </p>
+
+        <div class="info-row">
+          <span>◇ Safe & Secure</span>
+          <span>⚡ Instant Sort</span>
+          <span>▣ Privacy First</span>
+        </div>
+
+        <div class="cta-row">
+          <a
+            class="chrome-btn"
+            href="https://chromewebstore.google.com/detail/broncosort/iimoegnkdjicpamkelchhfcibglblmnh?authuser=0&hl=en"
+            target="_blank"
+          >
+            <div class="chrome-circle"></div>
+            Add to Chrome
+          </a>
+        </div>
+
+        <div class="student">
+          <div class="student-icon">👥</div>
+
+          <div>
+            <strong>Built for students.</strong>
+            <span>By a student.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="mock">
+        <div class="mock-top">
+          <span>Class Search</span>
+          <span>Cal Poly Pomona</span>
+          <span>☰</span>
+        </div>
+
+        <div class="mock-content">
+          <div class="course-head">
+            <div>
+              <h2>CSC 1200 - Introduction to Computer Science</h2>
+              <p>Spring 2026</p>
+            </div>
+
+            <button>Add Class</button>
+          </div>
+
+          <div class="table">
+            <div class="thead">
+              <span>Section</span>
+              <span>Professor</span>
+              <span>Day/Time</span>
+              <span>Room</span>
+              <span>Seats</span>
+              <span>Rating</span>
+            </div>
+
+            <div class="row">
+              <span>01</span>
+              <span>Brian Chen</span>
+              <span>MW 9:00 - 10:15 AM</span>
+              <span>Building 4 112</span>
+              <span>12 / 30</span>
+              <span class="rating">★ 4.6 <em>(120)</em></span>
+            </div>
+
+            <div class="row">
+              <span>03</span>
+              <span>Jasmine Patel</span>
+              <span>MW 10:30 - 11:45 AM</span>
+              <span>Building 4 112</span>
+              <span>8 / 30</span>
+              <span class="rating">★ 4.3 <em>(87)</em></span>
+            </div>
+
+            <div class="row">
+              <span>02</span>
+              <span>Derek Nguyen</span>
+              <span>TR 9:00 - 10:15 AM</span>
+              <span>Building 4 113</span>
+              <span>15 / 30</span>
+              <span class="rating">★ 3.9 <em>(64)</em></span>
+            </div>
+
+            <div class="row">
+              <span>05</span>
+              <span>Michael Lee</span>
+              <span>TR 2:00 - 3:15 PM</span>
+              <span>Building 4 113</span>
+              <span>6 / 30</span>
+              <span class="rating">★ 3.6 <em>(29)</em></span>
+            </div>
+
+            <div class="row">
+              <span>04</span>
+              <span>Sarah Kim</span>
+              <span>MW 1:00 - 2:15 PM</span>
+              <span>Building 4 111</span>
+              <span>10 / 30</span>
+              <span class="muted">No reviews</span>
+            </div>
+          </div>
+
+          <div class="sorted">
+            ✓ Sorted by professor rating (highest to lowest)
+            <strong>Powered by BroncoSort</strong>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="bottom">
+      <div>
+        <div class="bottom-icon">⌕</div>
+
+        <div>
+          <h3>Find better professors</h3>
+          <p>
+            See real ratings from RateMyProfessors before choosing sections.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <div class="bottom-icon">↕</div>
+
+        <div>
+          <h3>Sorted automatically</h3>
+          <p>BroncoSort moves the highest-rated professors to the top.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="bottom-icon">↗</div>
+
+        <div>
+          <h3>Request your school</h3>
+          <p>More schools can request access directly inside the extension.</p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+```

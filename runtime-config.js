@@ -2,7 +2,7 @@
 globalThis.BroncoSortConfig = Object.freeze({
   environment: "production",
   apiBaseUrl: "https://broncosort.onrender.com",
-  premiumPageUrl: "https://leogamboalg-cmd.github.io/BroncoSort/premium.html",
+  premiumPageUrl: "https://leogamboalg-cmd.github.io/BroncoSortWeb/premium.html",
   enableDebugLogs: false,
   fixtureHostnames: [],
 });

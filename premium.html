@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Premium | BroncoSort</title>
+    <meta
+      name="description"
+      content="Get three months of BroncoSort Premium for a one-time $4.99 payment. No subscription or automatic renewal."
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -223,6 +227,29 @@
         color: var(--muted);
         font-weight: 700;
         padding-bottom: 8px;
+      }
+
+      .purchase-summary {
+        margin-top: 12px;
+        padding: 13px 15px;
+        border: 1px solid #cce9d3;
+        border-radius: 14px;
+        background: #f1fbf3;
+        color: #205d34;
+        font-size: 0.92rem;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      .extension-step {
+        margin-top: 14px;
+        padding: 14px 16px;
+        border-radius: 14px;
+        background: #fff8e6;
+        border: 1px solid #f2d58a;
+        color: #664b08;
+        font-size: 0.92rem;
+        line-height: 1.55;
       }
 
       .features {
@@ -538,20 +565,21 @@
 
         <p class="hero-copy">
           BroncoSort Premium adds AI professor summaries, faster decision tools,
-          and account-based access across supported schools.
+          and account-based access across supported schools for three full
+          months.
         </p>
 
         <div class="trust-row">
           <span>✓ Secure Google sign-in</span>
           <span>✓ Stripe checkout</span>
-          <span>✓ Account-based access</span>
+          <span>✓ No automatic renewal</span>
         </div>
       </div>
 
       <article class="pricing-card">
         <div class="pricing-top">
           <span>BroncoSort Premium</span>
-          <span>Most Popular</span>
+          <span>3 months of access</span>
         </div>
 
         <div class="pricing-content">
@@ -563,7 +591,18 @@
 
           <div class="price">
             <strong>$4.99</strong>
-            <span>/ per semester</span>
+            <span>for 3 months</span>
+          </div>
+
+          <p class="purchase-summary">
+            One payment gives you three months of Premium. This is not a
+            subscription and does not renew automatically.
+          </p>
+
+          <div class="extension-step">
+            <strong>Important:</strong> Sign in here to purchase, then sign in
+            inside the BroncoSort extension with the same Google account to use
+            your Premium features.
           </div>
 
           <ul class="features">
@@ -598,11 +637,12 @@
           </ul>
 
           <div class="auth-box">
-            <h2>Continue with your Google account</h2>
+            <h2>1. Sign in with your Google account</h2>
             <p>
               Google securely verifies your identity so Premium can be linked to
               the correct BroncoSort account. BroncoSort never receives your
-              Google password.
+              Google password. After signing in, you can review and complete your
+              $4.99 purchase securely through Stripe.
             </p>
 
             <div id="signedInUser" class="account-card">
@@ -619,13 +659,19 @@
 
             <div id="googleButton"></div>
 
-            <!-- <button id="checkoutButton" class="buy-btn hidden" type="button">
-              Buy BroncoSort Premium
+            <button id="checkoutButton" class="buy-btn hidden" type="button">
+              Get 3 months of Premium — $4.99
             </button>
+
+            <p class="extension-step">
+              <strong>After checkout:</strong> Open BroncoSort from your Chrome
+              toolbar and sign in with this same Google account. Your Premium
+              access will then appear in the extension.
+            </p>
 
             <button id="signOutButton" class="signout-btn hidden" type="button">
               Use a different Google account
-            </button> -->
+            </button>
 
             <p id="statusMessage" class="status" aria-live="polite"></p>
           </div>
@@ -666,6 +712,25 @@
           <h2>Premium questions</h2>
 
           <div class="faq-list">
+            <details>
+              <summary>How do I use Premium after buying it?</summary>
+              <p>
+                Sign in on this website to make the purchase. Then open the
+                BroncoSort extension from your Chrome toolbar and sign in there
+                with the same Google account. Premium is connected through that
+                account, so both sign-ins are required.
+              </p>
+            </details>
+
+            <details>
+              <summary>How long does Premium last?</summary>
+              <p>
+                Each $4.99 purchase provides three months of Premium access,
+                beginning when Stripe confirms your payment. It is a one-time
+                purchase and will not renew automatically.
+              </p>
+            </details>
+
             <details>
               <summary>How is my purchase connected to my account?</summary>
               <p>
@@ -763,7 +828,7 @@
 
         checkoutButton.textContent = user.isPremium
           ? "Premium already active"
-          : "Buy BroncoSort Premium";
+          : "Get 3 months of Premium — $4.99";
 
         checkoutButton.disabled = Boolean(user.isPremium);
       }
@@ -847,7 +912,7 @@
           setStatus(
             currentUser.isPremium
               ? "Premium is already active on this account."
-              : "Account verified. You can continue to checkout.",
+              : "Account verified. Continue to Stripe for your one-time $4.99 purchase.",
           );
         } catch (error) {
           console.error("Authentication error:", error);
@@ -891,7 +956,7 @@
         } catch (error) {
           console.error("Checkout error:", error);
           checkoutButton.disabled = false;
-          checkoutButton.textContent = "Buy BroncoSort Premium";
+          checkoutButton.textContent = "Get 3 months of Premium — $4.99";
           setStatus(error.message || "Unable to start checkout.", true);
         }
       }
@@ -946,7 +1011,7 @@
       signOutButton.addEventListener("click", () => {
         showSignedOut();
         checkoutButton.disabled = false;
-        checkoutButton.textContent = "Buy BroncoSort Premium";
+        checkoutButton.textContent = "Get 3 months of Premium — $4.99";
         setStatus("Signed out.");
 
         if (window.google?.accounts?.id) {
@@ -962,7 +1027,9 @@
         const user = await restoreSession();
 
         if (paymentSucceeded && user?.isPremium === true) {
-          setStatus("Premium is already active on this account.");
+          setStatus(
+            "Premium is active. Now sign in inside the BroncoSort extension with this same Google account.",
+          );
         }
       });
     </script>

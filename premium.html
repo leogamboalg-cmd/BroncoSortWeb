@@ -395,6 +395,115 @@
         padding: 10px 56px 90px;
       }
 
+      .premium-preview { max-width: 1388px; margin: 0 auto 70px; padding: 0 56px; }
+      .preview-shell { padding: 30px; border: 1px solid #d8eedc; border-radius: 28px; background: rgba(255,255,255,.9); box-shadow: 0 28px 70px rgba(8,76,33,.08); }
+      .preview-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+      .preview-kicker { color: var(--green); font-size: .72rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+      .preview-heading h2 { margin-top: 7px; font-size: clamp(1.7rem,3vw,2.35rem); letter-spacing: -1.5px; }
+      .preview-heading p { max-width: 650px; margin-top: 9px; color: var(--muted); line-height: 1.6; }
+      .preview-label, .feature-status { display: inline-flex; align-items: center; border-radius: 999px; font-weight: 850; white-space: nowrap; }
+      .preview-label { padding: 9px 13px; color: white; background: var(--green); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+      .preview-grid { display: grid; grid-template-columns: minmax(0,.86fr) minmax(420px,1.14fr); gap: 22px; align-items: stretch; }
+      .course-preview, .insights-preview { overflow: hidden; border: 1px solid #dbe5dd; border-radius: 20px; background: white; }
+      .course-bar, .insights-header { padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; color: white; background: linear-gradient(135deg,#0b3b27,#08602e); font-size: .78rem; font-weight: 800; }
+      .course-bar span:last-child { color: #a7efb7; }
+      .course-body { padding: 24px; }
+      .course-code { color: var(--green); font-size: .76rem; font-weight: 900; letter-spacing: .08em; }
+      .course-body h3 { margin-top: 6px; font-size: 1.15rem; }
+      .course-meta { margin-top: 8px; color: #718078; font-size: .82rem; }
+      .instructor-label { margin-top: 28px; color: #728078; font-size: .68rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+      .professor-row { margin-top: 9px; padding: 15px; display: flex; align-items: center; gap: 13px; border: 1px solid #cfe2d3; border-radius: 15px; background: #f7fcf8; }
+      .professor-avatar { width: 48px; height: 48px; flex: 0 0 48px; display: grid; place-items: center; border-radius: 13px; background: linear-gradient(135deg,#0b6030,#118a42); color: white; font-weight: 900; }
+      .professor-name { min-width: 0; flex: 1; }
+      .professor-name strong, .professor-name small { display: block; }
+      .professor-name small { margin-top: 4px; color: #718078; }
+      .professor-score { color: var(--green); font-weight: 900; }
+      .available-note { margin-top: 18px; padding: 14px; border-radius: 14px; background: #edf9f0; color: #205d34; font-size: .84rem; line-height: 1.55; }
+      .insights-header strong { font-size: 1.05rem; }
+      .insights-body { padding: 22px; }
+      .stat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+      .stat { padding: 13px; border: 1px solid #dfe8e2; border-radius: 13px; background: #fbfdfb; }
+      .stat span, .stat small { display: block; color: #718078; font-size: .68rem; }
+      .stat strong { display: block; margin: 5px 0 2px; color: var(--green); font-size: 1.35rem; }
+      .ai-summary { margin-top: 14px; padding: 17px; border: 1px solid #cde4d2; border-radius: 15px; background: #f4fbf6; }
+      .ai-summary strong { color: #164523; }
+      .ai-summary p { margin-top: 8px; color: #536159; font-size: .86rem; line-height: 1.6; }
+      .grade-title { margin: 17px 0 10px; font-size: .88rem; font-weight: 850; }
+      .grade-row { display: grid; grid-template-columns: 28px 1fr 38px; align-items: center; gap: 9px; margin-top: 8px; color: #68736c; font-size: .72rem; }
+      .grade-track { height: 9px; overflow: hidden; border-radius: 999px; background: #e6eee8; }
+      .grade-track i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg,#087232,#18a247); }
+      .feature-status { margin-left: 7px; padding: 3px 8px; vertical-align: middle; font-size: .64rem; }
+      .feature-status.available { color: #08732f; background: #def6e3; }
+      .feature-status.soon { color: #765509; background: #fff1c7; }
+      .features li.coming-soon { color: #6f756f; }
+      .features li.coming-soon .check { color: #765509; background: #fff1c7; }
+
+      /* This is the same professor card presented inside the extension. */
+      .real-popup-wrap { display: grid; place-items: center; min-width: 0; padding: 18px; border-radius: 20px; background: #eef5ef; }
+      .real-popup-wrap .bs-prof-popup, .real-popup-wrap .bs-prof-popup * { box-sizing: border-box; font-family: Arial, sans-serif; }
+      .real-popup-wrap .bs-prof-popup { width: min(520px,100%); overflow: hidden; color: #082516; background: #fff; border: 1px solid rgba(21,128,61,.22); border-radius: 22px; box-shadow: 0 26px 70px rgba(0,0,0,.18); }
+      .real-popup-wrap .bs-prof-popup.bs-prof-popup--expanded { width: 350px; max-width: 100%; height: 580px; border: 0; border-radius: 16px; }
+      .bs-premium-view-frame { display: block; width: 350px; height: 580px; border: 0; }
+      .bs-popup-header { position: relative; display: flex; align-items: center; gap: 18px; padding: 22px 26px 32px; overflow: hidden; color: #fff; background: radial-gradient(circle at 88% 28%,rgba(80,220,120,.2),transparent 28%),linear-gradient(135deg,#0b3b27 0%,#0a5a32 48%,#06361f 100%); }
+      .bs-popup-header::after { content: ""; position: absolute; width: 220px; height: 2px; right: -20px; top: 18px; background: linear-gradient(90deg,transparent,rgba(167,243,208,.9),transparent); transform: rotate(-45deg); opacity: .8; }
+      .bs-popup-avatar { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; width: 72px; height: 72px; min-width: 72px; color: #087232; background: linear-gradient(180deg,#fff,#f5fff8); border: 2px solid #7ee69b; border-radius: 20px; box-shadow: 0 0 0 1px rgba(255,255,255,.5),0 14px 28px rgba(0,0,0,.18); font-size: 27px; font-weight: 900; }
+      .bs-popup-person { position: relative; z-index: 1; min-width: 0; flex: 1; }
+      .bs-popup-name { color: #fff; font-size: 28px; font-weight: 900; line-height: 1.05; }
+      .bs-popup-department { margin-top: 9px; overflow: hidden; color: #a7efb7; font-size: 13px; font-weight: 900; letter-spacing: 3px; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+      .bs-popup-rank-line { margin-top: 7px; color: #d9fbe2; font-size: 14px; font-weight: 600; line-height: 1.3; }
+      .bs-rmp-label { position: relative; z-index: 1; padding: 9px 14px; color: #b2f2c0; background: rgba(5,46,22,.25); border: 2px solid rgba(134,239,172,.55); border-radius: 10px; font-size: 13px; font-weight: 900; letter-spacing: 3px; }
+      .bs-popup-body { position: relative; z-index: 2; margin-top: -18px; padding: 18px 22px 14px; background: #fff; border-radius: 22px 22px 0 0; }
+      .bs-popup-stats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin-bottom: 12px; }
+      .bs-popup-stat { min-width: 0; min-height: 126px; padding: 12px; background: linear-gradient(180deg,#fff,#fbfdfb); border: 1px solid #dfe8e2; border-radius: 15px; box-shadow: 0 8px 18px rgba(15,23,42,.04); }
+      .bs-stat-icon { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; margin-bottom: 8px; color: #0b7c32; background: #e7f5e9; border-radius: 10px; font-size: 18px; font-weight: 900; }
+      .bs-popup-stat-label { margin-bottom: 9px; color: #087232; font-size: 15px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
+      .bs-popup-stat-value { color: #082516; font-size: 31px; font-weight: 900; line-height: 1; }
+      .bs-popup-stat-value span { color: #7c847f; font-size: 16px; font-weight: 500; }
+      .bs-bar { width: 100%; height: 8px; margin-top: 12px; overflow: hidden; background: #e6eee8; border-radius: 999px; }
+      .bs-bar div { height: 100%; background: linear-gradient(90deg,#087232,#18a247); border-radius: 999px; box-shadow: 0 0 14px rgba(24,162,71,.45); }
+      .bs-popup-reviews { display: flex; align-items: center; gap: 12px; padding: 2px 2px 12px; color: #68736c; font-size: 18px; }
+      .bs-popup-reviews strong { color: #087232; }
+      .bs-popup-stars { color: #14903d; font-size: 24px; letter-spacing: 4px; white-space: nowrap; }
+      .bs-empty-star { color: #d4ddd7; }
+      .bs-popup-premium-actions { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; margin-bottom: 12px; }
+      .bs-popup-secondary-button { min-width: 0; padding: 12px; color: #075522; background: #f4faf6; border: 1px solid #b8d4bf; border-radius: 14px; font-size: 14px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
+      .bs-popup-footer { display: flex; align-items: center; gap: 7px; margin-top: 10px; padding-top: 10px; color: #68736c; border-top: 1px solid #e2e8e4; font-size: 16px; }
+      .bs-live-dot { display: inline-block; width: 8px; height: 8px; background: #35b66b; border-radius: 50%; }
+      .preview-availability { margin-top: 18px; padding: 16px 18px; color: #405046; background: #fff; border: 1px solid #d8e5dc; border-radius: 15px; line-height: 1.6; }
+      .bs-popup-secondary-button { cursor: pointer; transition: background .15s ease, transform .15s ease; }
+      .bs-popup-secondary-button:hover { background: #eaf7ee; transform: translateY(-1px); }
+      .bs-popup-secondary-button:focus-visible, .demo-back:focus-visible { outline: 3px solid rgba(45,172,98,.32); outline-offset: 2px; }
+      .demo-view { min-height: 484px; background: #f6faf7; }
+      .demo-view-nav { height: 50px; padding: 8px 12px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; color: #064e2b; background: #fff; border-bottom: 1px solid #d8e5dc; font-family: Arial,sans-serif; }
+      .demo-view-nav strong { font-size: 15px; text-align: center; }
+      .demo-back { width: fit-content; padding: 7px 9px; color: #086238; background: transparent; border: 0; border-radius: 8px; cursor: pointer; font-weight: 700; }
+      .demo-premium-badge { justify-self: end; padding: 5px 7px; color: #08783f; border: 1px solid #67bd87; border-radius: 6px; font-size: 10.5px; font-weight: 800; }
+      .demo-prof-header { padding: 13px 15px; display: grid; grid-template-columns: 46px 1fr; align-items: center; gap: 10px; color: #fff; background: linear-gradient(135deg,#0b3b27,#08602e); }
+      .demo-prof-header .bs-popup-avatar { width: 46px; height: 46px; min-width: 46px; border-radius: 12px; font-size: 18px; }
+      .demo-prof-header strong, .demo-prof-header span { display: block; }
+      .demo-prof-header strong { font-size: 22px; }
+      .demo-prof-header span { margin-top: 3px; color: #b9efc5; font-size: 11px; }
+      .demo-view-content { max-height: 430px; padding: 12px; overflow-y: auto; }
+      .demo-section { margin-bottom: 12px; padding: 14px; background: #fff; border: 1px solid #d8e5dc; border-radius: 12px; box-shadow: 0 2px 9px rgba(16,38,26,.05); }
+      .demo-section h3 { margin: 0 0 10px; color: #10261a; font-size: 14px; }
+      .demo-gpa-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; text-align: center; }
+      .demo-gpa-grid span, .demo-gpa-grid strong { display: block; }
+      .demo-gpa-grid span { color: #59685f; font-size: 10px; }
+      .demo-gpa-grid strong { margin-top: 5px; color: #08783f; font-size: 20px; }
+      .demo-grade-row { display: grid; grid-template-columns: 24px 1fr 38px; align-items: center; gap: 9px; margin-top: 9px; color: #59685f; font-size: 12px; }
+      .demo-grade-track { height: 10px; overflow: hidden; background: #e6eee8; border-radius: 999px; }
+      .demo-grade-track i { display: block; height: 100%; background: linear-gradient(90deg,#087232,#18a247); border-radius: inherit; }
+      .demo-summary-meta { display: flex; gap: 8px; margin-bottom: 10px; }
+      .demo-summary-meta span { padding: 5px 8px; color: #08783f; background: #e9f7ee; border-radius: 999px; font-size: 10px; font-weight: 800; }
+      .demo-overview { color: #536159; font-size: 13px; line-height: 1.6; }
+      .demo-verdicts, .demo-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .demo-verdicts div { padding: 11px; background: #fff; border: 1px solid #d8e5dc; border-radius: 10px; }
+      .demo-verdicts span, .demo-verdicts strong { display: block; }
+      .demo-verdicts span { color: #59685f; font-size: 10px; text-transform: uppercase; }
+      .demo-verdicts strong { margin-top: 5px; color: #10261a; font-size: 12px; }
+      .demo-pros-cons ul, .demo-takeaways { margin: 7px 0 0; padding-left: 18px; color: #536159; font-size: 12px; line-height: 1.55; }
+      .demo-data-footer { padding: 9px 12px; color: #59685f; background: #fff; border-top: 1px solid #d8e5dc; font-size: 10.5px; }
+
       .grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -505,6 +614,9 @@
           padding: 20px 22px 50px;
         }
 
+        .premium-preview { padding: 0 22px; margin-bottom: 50px; }
+        .preview-grid { grid-template-columns: 1fr; }
+
         .grid {
           grid-template-columns: 1fr;
         }
@@ -534,6 +646,25 @@
         .price strong {
           font-size: 3.3rem;
         }
+
+        .preview-shell { padding: 20px; }
+        .preview-heading { flex-direction: column; }
+        .preview-grid { display: block; }
+        .insights-preview { margin-top: 16px; }
+        .stat-grid { grid-template-columns: 1fr; }
+        .professor-score { display: none; }
+        .real-popup-wrap { padding: 8px; }
+        .bs-popup-header { padding: 18px 16px 29px; gap: 11px; }
+        .bs-popup-avatar { width: 54px; height: 54px; min-width: 54px; font-size: 20px; }
+        .bs-popup-name { font-size: 21px; }
+        .bs-rmp-label { padding: 7px; letter-spacing: 1px; }
+        .bs-popup-body { padding: 16px 12px 12px; }
+        .bs-popup-stats { gap: 6px; }
+        .bs-popup-stat { min-height: 112px; padding: 8px; }
+        .bs-popup-stat-label { font-size: 11px; letter-spacing: 0; }
+        .bs-popup-stat-value { font-size: 24px; }
+        .bs-popup-reviews { align-items: flex-start; flex-direction: column; font-size: 14px; }
+        .demo-pros-cons, .demo-verdicts { grid-template-columns: 1fr; }
       }
     </style>
   </head>
@@ -574,9 +705,8 @@
         </h1>
 
         <p class="hero-copy">
-          BroncoSort Premium adds AI professor summaries, faster decision tools,
-          and account-based access across supported schools for three full
-          months.
+          BroncoSort Premium adds AI professor summaries, grade insights, and
+          account-based access across supported schools for three full months.
         </p>
 
         <div class="trust-row">
@@ -620,21 +750,23 @@
               <span class="check">✓</span>
               <span
                 ><strong>AI professor summaries</strong> with clear pros, cons,
-                and teaching-style insights.</span
+                and teaching-style insights.
+                <span class="feature-status available">Available now</span></span
               >
             </li>
-            <li>
-              <span class="check">✓</span>
+            <li class="coming-soon">
+              <span class="check">&bull;</span>
               <span
                 ><strong>Premium schedule tools</strong> for faster comparisons
-                and planning.</span
+                and planning.
+                <span class="feature-status soon">Coming soon</span></span
               >
             </li>
-            <li>
-              <span class="check">✓</span>
+            <li class="coming-soon">
+              <span class="check">&bull;</span>
               <span
-                ><strong>Canvas calendar setup</strong> when available for your
-                school.</span
+                ><strong>Canvas calendar setup</strong> is not available yet.
+                <span class="feature-status soon">Coming soon</span></span
               >
             </li>
             <li>
@@ -687,6 +819,65 @@
           </div>
         </div>
       </article>
+    </section>
+
+    <section class="premium-preview" aria-labelledby="premium-preview-title">
+      <div class="preview-shell">
+        <div class="preview-heading">
+          <div>
+            <span class="preview-kicker">Premium preview</span>
+            <h2 id="premium-preview-title">Meet your professor before class.</h2>
+            <p>This is the same professor card Premium users see inside BroncoSort, shown with demo data.</p>
+          </div>
+          <span class="preview-label">Sample data</span>
+        </div>
+
+        <div class="real-popup-wrap">
+          <article class="bs-prof-popup" aria-label="BroncoSort Premium professor card demo">
+            <div class="bs-popup-header">
+              <div class="bs-popup-avatar">ER</div>
+              <div class="bs-popup-person">
+                <div class="bs-popup-name">Dr. Elena Ramirez</div>
+                <div class="bs-popup-department">Computer Science</div>
+                <div class="bs-popup-rank-line">Top 6% &bull; Ranked #3 of 48 professors</div>
+              </div>
+              <div class="bs-rmp-label">RMP</div>
+            </div>
+            <div class="bs-popup-body">
+              <div class="bs-popup-stats">
+                <div class="bs-popup-stat">
+                  <div class="bs-stat-icon">&#9733;</div>
+                  <div class="bs-popup-stat-label">Rating</div>
+                  <div class="bs-popup-stat-value">4.8<span>/5</span></div>
+                  <div class="bs-bar"><div style="width:96%"></div></div>
+                </div>
+                <div class="bs-popup-stat">
+                  <div class="bs-stat-icon">!</div>
+                  <div class="bs-popup-stat-label">Difficulty</div>
+                  <div class="bs-popup-stat-value">2.4<span>/5</span></div>
+                  <div class="bs-bar"><div style="width:48%"></div></div>
+                </div>
+                <div class="bs-popup-stat">
+                  <div class="bs-stat-icon">%</div>
+                  <div class="bs-popup-stat-label">Take Again</div>
+                  <div class="bs-popup-stat-value">94%</div>
+                  <div class="bs-bar"><div style="width:94%"></div></div>
+                </div>
+              </div>
+              <div class="bs-popup-reviews">
+                <div class="bs-popup-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div>Based on <strong>126</strong> student reviews</div>
+              </div>
+              <div class="bs-popup-premium-actions">
+                <button class="bs-popup-secondary-button" type="button" data-demo-view="grades">Grade Graph</button>
+                <button class="bs-popup-secondary-button" type="button" data-demo-view="ai">AI Summary</button>
+              </div>
+              <div class="bs-popup-footer"><span class="bs-live-dot"></span> Demo data</div>
+            </div>
+          </article>
+        </div>
+        <p class="preview-availability"><strong>Available now:</strong> professor ratings, grade graphs where supported, and AI summaries with pros, cons, course style, and student takeaways. <strong>Coming soon:</strong> Premium schedule tools and Canvas calendar setup.</p>
+      </div>
     </section>
 
     <main class="content">
@@ -1052,6 +1243,124 @@
           );
         }
       });
+
+      const demoCard = document.querySelector(".real-popup-wrap .bs-prof-popup");
+      const demoProfileMarkup = demoCard?.innerHTML || "";
+
+      const demoViews = {
+        grades: `
+          <div class="demo-view">
+            <div class="demo-view-nav">
+              <button class="demo-back" type="button" data-demo-back>&larr; Back</button>
+              <strong>&#9645; Grade Graph</strong>
+              <span class="demo-premium-badge">Premium</span>
+            </div>
+            <div class="demo-prof-header">
+              <div class="bs-popup-avatar">ER</div>
+              <div><strong>Dr. Elena Ramirez</strong><span>Computer Science &middot; Top 6%</span></div>
+            </div>
+            <div class="demo-view-content">
+              <section class="demo-section">
+                <h3>GPA Comparison</h3>
+                <div class="demo-gpa-grid">
+                  <div><span>Prof Overall</span><strong>3.42</strong></div>
+                  <div><span>Prof in CS 2400</span><strong>3.51</strong></div>
+                  <div><span>CS 2400 Overall</span><strong>3.08</strong></div>
+                </div>
+              </section>
+              <section class="demo-section">
+                <h3>Grade Distribution</h3>
+                <div class="demo-grade-row"><b>A</b><span class="demo-grade-track"><i style="width:82%"></i></span><span>41%</span></div>
+                <div class="demo-grade-row"><b>B</b><span class="demo-grade-track"><i style="width:64%"></i></span><span>32%</span></div>
+                <div class="demo-grade-row"><b>C</b><span class="demo-grade-track"><i style="width:32%"></i></span><span>16%</span></div>
+                <div class="demo-grade-row"><b>D</b><span class="demo-grade-track"><i style="width:14%"></i></span><span>7%</span></div>
+                <div class="demo-grade-row"><b>F</b><span class="demo-grade-track"><i style="width:8%"></i></span><span>4%</span></div>
+              </section>
+              <section class="demo-section">
+                <h3>Trends Over Time</h3>
+                <svg viewBox="0 0 300 90" role="img" aria-label="Demo average GPA trend" style="display:block;width:100%;height:auto">
+                  <path d="M12 72 L82 55 L152 59 L222 32 L288 22" fill="none" stroke="#18a247" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                  <g fill="#087232"><circle cx="12" cy="72" r="5"/><circle cx="82" cy="55" r="5"/><circle cx="152" cy="59" r="5"/><circle cx="222" cy="32" r="5"/><circle cx="288" cy="22" r="5"/></g>
+                </svg>
+              </section>
+            </div>
+            <div class="demo-data-footer"><span class="bs-live-dot"></span> Demo grade data</div>
+          </div>`,
+        ai: `
+          <div class="demo-view">
+            <div class="demo-view-nav">
+              <button class="demo-back" type="button" data-demo-back>&larr; Back</button>
+              <strong>&#10022; AI Summary</strong>
+              <span class="demo-premium-badge">Premium</span>
+            </div>
+            <div class="demo-prof-header">
+              <div class="bs-popup-avatar">ER</div>
+              <div><strong>Dr. Elena Ramirez</strong><span>Computer Science &middot; Top 6%</span></div>
+            </div>
+            <div class="demo-view-content">
+              <section class="demo-section">
+                <div class="demo-summary-meta"><span>92% positive</span><span>126 reviews</span></div>
+                <h3>AI Overview</h3>
+                <p class="demo-overview">Students describe Dr. Ramirez as clear, organized, and approachable. Lectures use practical examples, assignments reinforce the material, and exams closely follow the concepts covered in class.</p>
+              </section>
+              <div class="demo-verdicts">
+                <div><span>Student verdict</span><strong>Highly recommended</strong></div>
+                <div><span>Course style</span><strong>Projects and practical examples</strong></div>
+              </div>
+              <div class="demo-pros-cons">
+                <section class="demo-section"><h3>&#10003; Pros</h3><ul><li>Clear explanations</li><li>Helpful office hours</li><li>Fair, relevant exams</li></ul></section>
+                <section class="demo-section"><h3>! Cons</h3><ul><li>Projects require steady work</li><li>Attendance matters</li><li>Fast pace near exams</li></ul></section>
+              </div>
+              <section class="demo-section"><h3>Student Takeaways</h3><ul class="demo-takeaways"><li>Start projects early and ask questions.</li><li>Review lecture examples before exams.</li><li>Office hours are useful for difficult topics.</li></ul></section>
+            </div>
+            <div class="demo-data-footer"><span class="bs-live-dot"></span> AI-generated demo summary</div>
+          </div>`,
+      };
+
+      function showDemoProfile() {
+        if (!demoCard) return;
+        demoCard.innerHTML = demoProfileMarkup;
+        bindDemoControls();
+      }
+
+      function bindDemoControls() {
+        demoCard?.querySelectorAll("[data-demo-view]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const viewPaths = {
+              grades: "premium-preview/gradeDistribution/grade-distribution.html",
+              ai: "premium-preview/aiOverview/ai-overview.html",
+            };
+            const viewPath = viewPaths[button.dataset.demoView];
+            if (!viewPath) return;
+
+            const params = new URLSearchParams({
+              school: "Cal Poly Pomona",
+              name: "Dr. Elena Ramirez",
+              department: "Computer Science",
+              initials: "ER",
+              rankText: "Top 6% · Ranked #3 of 48 professors",
+              courseId: "CS 2400",
+              preview: "1",
+            });
+            const frame = document.createElement("iframe");
+            frame.className = "bs-premium-view-frame";
+            frame.title = button.dataset.demoView === "ai"
+              ? "AI professor overview demo"
+              : "Grade distribution demo";
+            frame.src = `${viewPath}?${params.toString()}`;
+            demoCard.classList.add("bs-prof-popup--expanded");
+            demoCard.replaceChildren(frame);
+          });
+        });
+      }
+
+      window.addEventListener("message", (event) => {
+        if (event.data?.type !== "BRONCOSORT_PREMIUM_VIEW_BACK") return;
+        demoCard?.classList.remove("bs-prof-popup--expanded");
+        showDemoProfile();
+      });
+
+      bindDemoControls();
     </script>
   </body>
 </html>

@@ -1,0 +1,192 @@
+<!-- src/core/premiumViews/aiOverview/ai-overview.html -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AI Overview | BroncoSort</title>
+
+    <link rel="stylesheet" href="./ai-overview.css" />
+    <link rel="stylesheet" href="../shared.css" />
+  </head>
+
+  <body>
+    <main class="ai-card">
+      <!-- Top navigation -->
+      <div class="ai-navigation">
+        <button
+          id="backButton"
+          class="back-button"
+          type="button"
+          aria-label="Return to professor profile"
+        >
+          <span aria-hidden="true">←</span>
+          Back
+        </button>
+
+        <div class="page-title">
+          <span class="page-title-icon" aria-hidden="true">✦</span>
+          <span>AI Summary</span>
+        </div>
+
+        <span class="premium-badge">Premium</span>
+      </div>
+
+      <!-- Professor header -->
+      <section class="professor-header">
+        <div class="professor-avatar" aria-hidden="true">JK</div>
+
+        <div class="professor-info">
+          <h1 id="professorName">John Korah</h1>
+
+          <p id="professorDepartment" class="department">Computer Science</p>
+
+          <p class="professor-rank">Top 32% · Ranked #26 of 83 professors</p>
+        </div>
+
+        <a
+          id="rmpLink"
+          class="rmp-button"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          RMP
+        </a>
+      </section>
+
+      <!-- Scrollable summary content -->
+      <div id="aiOverviewContent" class="ai-content">
+        <!-- Loading state -->
+        <section id="loadingState" class="state-card">
+          <div class="loading-spinner" aria-hidden="true"></div>
+          <p>Analyzing student reviews...</p>
+        </section>
+
+        <!-- Error state -->
+        <section id="errorState" class="state-card hidden">
+          <div class="error-icon" aria-hidden="true">!</div>
+
+          <h2>Summary unavailable</h2>
+
+          <p id="errorMessage">
+            BroncoSort could not load this professor's summary.
+          </p>
+
+          <button id="retryButton" class="retry-button" type="button">
+            Try Again
+          </button>
+        </section>
+
+        <!-- Summary -->
+        <div id="summaryView" class="hidden">
+          <section class="overview-section content-section">
+            <div class="section-heading-row">
+              <h2>
+                <span class="section-icon sparkle-icon" aria-hidden="true">
+                  ✦
+                </span>
+
+                AI Overview
+              </h2>
+
+              <span id="sentimentBadge" class="sentiment-badge">
+                72% positive
+              </span>
+            </div>
+
+            <p id="overviewText" class="overview-text">
+              Professor Korah is generally viewed as approachable and helpful,
+              especially during office hours. His courses may be difficult for
+              beginners, but students appreciate practical projects and
+              extra-credit opportunities.
+            </p>
+          </section>
+
+          <section class="verdict-section">
+            <div>
+              <span class="small-label">Student verdict</span>
+              <strong id="verdictText">Take Office Hours</strong>
+            </div>
+
+            <div class="exam-style">
+              <span class="small-label">Course style</span>
+              <strong id="examStyleText">ZyBooks, Quizzes</strong>
+            </div>
+          </section>
+
+          <section class="pros-cons-grid">
+            <div class="list-section pros-section">
+              <h2>
+                <span class="list-heading-icon positive" aria-hidden="true">
+                  ✓
+                </span>
+                Pros
+              </h2>
+
+              <ul id="prosList">
+                <li>Generous extra credit</li>
+                <li>Helpful during office hours</li>
+                <li>Practical course projects</li>
+              </ul>
+            </div>
+
+            <div class="list-section cons-section">
+              <h2>
+                <span class="list-heading-icon negative" aria-hidden="true">
+                  !
+                </span>
+                Cons
+              </h2>
+
+              <ul id="consList">
+                <li>Lectures can feel dry</li>
+                <li>Grading may be delayed</li>
+                <li>Challenging for beginners</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="takeaways-section content-section">
+            <h2>
+              <span class="section-icon quote-icon" aria-hidden="true">
+                “
+              </span>
+
+              Student Takeaways
+            </h2>
+
+            <ul id="takeawaysList" class="takeaways-list">
+              <li>Office hours helped me understand difficult topics.</li>
+              <li>The projects provided useful practice.</li>
+              <li>Students should keep up with weekly work.</li>
+              <li>Beginners may need additional preparation.</li>
+            </ul>
+          </section>
+
+          <p class="disclaimer">
+            <span class="disclaimer-dot" aria-hidden="true"></span>
+
+            This AI-generated summary is based on student reviews and may not
+            represent every student's experience.
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="ai-footer">
+        <span class="live-status">
+          <span class="live-dot" aria-hidden="true"></span>
+          Live data
+        </span>
+
+        <span id="reviewCount">Based on 18 written reviews</span>
+      </footer>
+    </main>
+
+    <script src="./ai-overview.js"></script>
+  </body>
+</html>

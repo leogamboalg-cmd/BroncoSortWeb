@@ -1,0 +1,371 @@
+:root {
+  --bs-green-900: #064e2b;
+  --bs-green-800: #086238;
+  --bs-green-700: #08783f;
+  --bs-green-500: #2dac62;
+  --bs-green-100: #e9f7ee;
+  --bs-text: #10261a;
+  --bs-text-muted: #59685f;
+  --bs-border: #d8e5dc;
+  --bs-surface: #ffffff;
+  --bs-surface-soft: #f6faf7;
+  --bs-danger: #d9363e;
+  --bs-danger-soft: #fff0f1;
+  --bs-space-1: 4px;
+  --bs-space-2: 8px;
+  --bs-space-3: 12px;
+  --bs-space-4: 16px;
+  --bs-radius-sm: 8px;
+  --bs-radius-md: 12px;
+  --bs-radius-lg: 16px;
+  --bs-shadow-card: 0 18px 45px rgb(16 38 26 / 18%);
+  --bs-shadow-section: 0 2px 9px rgb(16 38 26 / 5%);
+  --bs-font-page-title: 15px;
+  --bs-font-professor-name: 22px;
+  --bs-font-section-title: 14px;
+  --bs-font-body: 13.5px;
+  --bs-font-list: 12px;
+  --bs-font-value: 12.5px;
+  --bs-font-meta: 11px;
+  --bs-font-small: 10.5px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 350px;
+  min-width: 350px;
+  max-width: 350px;
+  height: 580px;
+  margin: 0;
+  overflow: hidden;
+  color: var(--bs-text);
+  background: transparent;
+}
+
+.ai-card,
+.grade-card {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 580px;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--bs-surface);
+  border-radius: var(--bs-radius-lg);
+  box-shadow: var(--bs-shadow-card);
+}
+
+.ai-navigation,
+.grade-navigation {
+  z-index: 2;
+  flex: 0 0 48px;
+  min-height: 48px;
+  padding: 7px var(--bs-space-3);
+  border-bottom: 1px solid var(--bs-border);
+}
+
+.page-title {
+  gap: 6px;
+  color: var(--bs-green-900);
+  font-size: var(--bs-font-page-title);
+  font-weight: 850;
+  letter-spacing: 0.01em;
+}
+
+.back-button {
+  min-height: 32px;
+  padding: 6px 8px;
+  color: var(--bs-green-800);
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: var(--bs-radius-sm);
+}
+
+.back-button:hover {
+  background: var(--bs-green-100);
+}
+
+.back-button:active,
+.retry-button:active,
+.info-button:active {
+  transform: translateY(1px);
+}
+
+.back-button:focus-visible,
+.retry-button:focus-visible,
+.rmp-button:focus-visible,
+.info-button:focus-visible,
+.dialog-close:focus-visible {
+  outline: 3px solid rgb(45 172 98 / 32%);
+  outline-offset: 2px;
+}
+
+.premium-badge {
+  padding: 5px 7px;
+  color: var(--bs-green-700);
+  font-size: var(--bs-font-small);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  border-color: #67bd87;
+  border-radius: 6px;
+}
+
+.professor-header {
+  flex: 0 0 94px;
+  min-height: 94px;
+  grid-template-columns: 46px minmax(0, 1fr) 46px;
+  gap: 10px;
+  padding: 13px 15px;
+}
+
+.professor-avatar {
+  width: 46px;
+  height: 46px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+
+.professor-info h1 {
+  margin-bottom: 4px;
+  font-size: var(--bs-font-professor-name);
+  font-weight: 800;
+  line-height: 1.12;
+}
+
+.department {
+  margin-bottom: 5px;
+  font-size: var(--bs-font-meta);
+  font-weight: 750;
+  line-height: 1.25;
+  letter-spacing: 0.1em;
+}
+
+.professor-rank {
+  font-size: var(--bs-font-small);
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.rmp-button {
+  width: 46px;
+  height: 34px;
+  font-size: var(--bs-font-meta);
+  border-radius: var(--bs-radius-sm);
+}
+
+.ai-content,
+.grade-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: var(--bs-space-3);
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  background: var(--bs-surface-soft);
+  scrollbar-width: thin;
+  scrollbar-color: #9fc7ad transparent;
+}
+
+.ai-content::-webkit-scrollbar,
+.grade-content::-webkit-scrollbar {
+  width: 7px;
+}
+
+.ai-content::-webkit-scrollbar-thumb,
+.grade-content::-webkit-scrollbar-thumb {
+  background: #9fc7ad;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+
+.content-section,
+.list-section,
+.verdict-section > div {
+  border-color: var(--bs-border);
+}
+
+.content-section {
+  padding: 14px;
+  border-radius: var(--bs-radius-md);
+  box-shadow: var(--bs-shadow-section);
+}
+
+.content-section h2,
+.list-section h2 {
+  gap: 7px;
+  font-size: var(--bs-font-section-title);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0.015em;
+}
+
+.section-icon {
+  flex: 0 0 auto;
+}
+
+.section-subtitle {
+  color: var(--bs-text-muted);
+  font-size: var(--bs-font-meta);
+  line-height: 1.4;
+}
+
+.state-card {
+  min-height: 230px;
+  padding: 26px 18px;
+  border-color: var(--bs-border);
+  border-radius: var(--bs-radius-md);
+}
+
+.state-card h2 {
+  font-size: 16px;
+}
+
+.state-card p {
+  max-width: 250px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.retry-button {
+  min-height: 34px;
+  padding: 8px 14px;
+  font-size: var(--bs-font-list);
+  font-weight: 750;
+  border-radius: var(--bs-radius-sm);
+}
+
+.ai-footer,
+.grade-footer {
+  z-index: 2;
+  flex: 0 0 38px;
+  min-height: 38px;
+  padding: 8px var(--bs-space-3);
+  color: var(--bs-text-muted);
+  font-size: var(--bs-font-small);
+  line-height: 1.25;
+  background: var(--bs-surface);
+  border-top: 1px solid var(--bs-border);
+}
+
+.live-status {
+  gap: 6px;
+  font-weight: 650;
+}
+
+/* Shared readable typography for premium content. */
+
+.ai-card .overview-text {
+  font-size: var(--bs-font-body);
+  line-height: 1.62;
+}
+
+.ai-card .sentiment-badge {
+  font-size: var(--bs-font-meta);
+  line-height: 1.2;
+}
+
+.ai-card .small-label {
+  font-size: var(--bs-font-small);
+  line-height: 1.3;
+  letter-spacing: 0.035em;
+}
+
+.ai-card .verdict-section strong {
+  overflow: visible;
+  font-size: var(--bs-font-value);
+  line-height: 1.4;
+  text-overflow: clip;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.ai-card .list-section li,
+.ai-card .takeaways-list li {
+  font-size: var(--bs-font-list);
+  line-height: 1.5;
+}
+
+.ai-card .disclaimer {
+  font-size: var(--bs-font-small);
+  line-height: 1.5;
+}
+
+.grade-card .source-badge {
+  font-size: var(--bs-font-small);
+  line-height: 1.2;
+  letter-spacing: 0.035em;
+}
+
+.grade-card .grade-percentage {
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.grade-card .grade-label {
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+.grade-card .summary-stat span {
+  font-size: var(--bs-font-small);
+  line-height: 1.3;
+}
+
+.grade-card .summary-stat strong {
+  font-size: 13px;
+}
+
+.grade-card .trend-y-axis {
+  font-size: var(--bs-font-small);
+  font-weight: 550;
+}
+
+.grade-card .trend-value {
+  /* The SVG viewBox scales 16 units to about 10.5–11px on screen. */
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.grade-card .trend-term-label {
+  min-width: 0;
+  font-size: var(--bs-font-small);
+  font-weight: 550;
+  line-height: 1.2;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.grade-card .data-note {
+  font-size: var(--bs-font-small);
+  line-height: 1.5;
+}
+
+.grade-card .info-button,
+.grade-footer .live-status {
+  font-size: var(--bs-font-small);
+}
+
+.grade-card .info-button {
+  font-weight: 650;
+}
+
+.grade-card .info-dialog p {
+  font-size: var(--bs-font-list);
+  line-height: 1.55;
+}
+
+.live-dot {
+  flex: 0 0 auto;
+}
+
+.hidden {
+  display: none !important;
+}

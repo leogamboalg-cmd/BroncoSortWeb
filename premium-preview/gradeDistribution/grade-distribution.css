@@ -1,0 +1,1056 @@
+/* src/core/premiumViews/gradeDistribution/grade-distribution.css */
+
+:root {
+  --green-dark: #005f35;
+  --green: #08783f;
+  --green-medium: #1e9e51;
+  --green-light: #42ba6d;
+  --green-soft: #eaf7ee;
+
+  --text-primary: #10261a;
+  --text-secondary: #68736c;
+
+  --surface: #ffffff;
+  --surface-soft: #f7faf8;
+  --border: #dbe7df;
+
+  --danger: #ef4444;
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 350px;
+  min-width: 350px;
+  margin: 0;
+  padding: 0;
+  color: var(--text-primary);
+  background: transparent;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.grade-card {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 580px;
+  overflow: hidden;
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow:
+    0 18px 45px rgb(16 38 26 / 18%),
+    0 4px 12px rgb(16 38 26 / 10%);
+}
+
+/* Navigation */
+
+.grade-navigation {
+  display: grid;
+  grid-template-columns: 80px 1fr 80px;
+  align-items: center;
+  min-height: 52px;
+  padding: 8px 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.back-button {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  justify-self: start;
+  padding: 7px 8px;
+  color: var(--green-dark);
+  font-size: 12px;
+  font-weight: 750;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+}
+
+.back-button:hover {
+  background: var(--green-soft);
+}
+
+.page-title {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  color: var(--green-dark);
+  font-size: 14px;
+  font-weight: 850;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.page-title-icon {
+  color: var(--green-medium);
+  font-size: 18px;
+}
+
+.premium-badge {
+  justify-self: end;
+  padding: 5px 7px;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid #6ec990;
+  border-radius: 6px;
+}
+
+/* Professor header */
+
+.professor-header {
+  position: relative;
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1fr) 48px;
+  gap: 11px;
+  align-items: center;
+  min-height: 105px;
+  padding: 16px;
+  overflow: hidden;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--green-dark), #05733d 68%, #0b8349);
+}
+
+.professor-header::after {
+  position: absolute;
+  top: -54px;
+  right: 34px;
+  width: 1px;
+  height: 155px;
+  content: "";
+  background: rgb(255 255 255 / 24%);
+  transform: rotate(43deg);
+}
+
+.professor-avatar {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 50px;
+  height: 50px;
+  place-items: center;
+  color: var(--green);
+  font-size: 19px;
+  font-weight: 900;
+  background: #ffffff;
+  border: 2px solid #67cd8e;
+  border-radius: 13px;
+  box-shadow: 0 5px 14px rgb(0 0 0 / 14%);
+}
+
+.professor-info {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.professor-info h1 {
+  margin: 0 0 4px;
+  overflow: hidden;
+  font-size: 21px;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.department {
+  margin: 0 0 6px;
+  overflow: hidden;
+  color: #a7edbf;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.17em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.professor-rank {
+  margin: 0;
+  overflow: hidden;
+  font-size: 10px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rmp-button {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 48px;
+  height: 34px;
+  place-items: center;
+  color: #cbf7da;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  border: 1px solid #69bc89;
+  border-radius: 8px;
+}
+
+/* Scrollable area */
+
+.grade-content {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  padding: 12px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--surface-soft);
+  scrollbar-width: thin;
+  scrollbar-color: #a7cbb4 transparent;
+}
+
+.content-section {
+  padding: 15px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgb(16 38 26 / 4%);
+}
+
+.section-heading-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.content-section h2 {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  margin: 0;
+  color: var(--green-dark);
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.section-icon {
+  display: inline-grid;
+  width: 23px;
+  height: 23px;
+  place-items: center;
+  color: var(--green-medium);
+  background: var(--green-soft);
+  border-radius: 7px;
+}
+
+.section-subtitle {
+  margin: 7px 0 0 30px;
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+.source-badge {
+  flex: 0 0 auto;
+  padding: 5px 7px;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background: var(--green-soft);
+  border-radius: 6px;
+}
+
+/* Distribution chart */
+
+.grade-chart {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 9px;
+  align-items: end;
+  height: 175px;
+  margin-top: 15px;
+  padding: 16px 8px 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 39px,
+    #edf2ef 40px
+  );
+}
+
+.grade-column {
+  display: grid;
+  grid-template-rows: 25px 1fr 23px;
+  height: 100%;
+  text-align: center;
+}
+
+.grade-percentage {
+  align-self: end;
+  color: var(--text-primary);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.grade-bar-shell {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+}
+
+.grade-bar {
+  width: 28px;
+  min-height: 3px;
+  background: linear-gradient(180deg, var(--green-light), var(--green-medium));
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 3px 8px rgb(30 158 81 / 20%);
+  transform-origin: bottom;
+  animation: growBar 550ms ease-out both;
+}
+
+.grade-label {
+  align-self: end;
+  padding-top: 6px;
+  color: var(--text-primary);
+  font-size: 10px;
+  font-weight: 750;
+}
+
+@keyframes growBar {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* Summary row */
+
+.summary-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 12px;
+}
+
+.summary-stat {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.summary-stat.align-right {
+  justify-content: flex-end;
+}
+
+.summary-stat span {
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+.summary-stat strong {
+  padding: 6px 8px;
+  color: var(--green);
+  font-size: 12px;
+  background: var(--green-soft);
+  border-radius: 7px;
+}
+
+/* Trend chart */
+
+.trend-section {
+  margin-top: 10px;
+}
+
+.trend-icon {
+  font-size: 15px;
+}
+
+.trend-chart-shell {
+  display: grid;
+  grid-template-columns: 33px minmax(0, 1fr);
+  gap: 7px;
+  margin-top: 15px;
+}
+
+.trend-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 185px;
+  padding-bottom: 22px;
+  color: var(--text-secondary);
+  font-size: 10px;
+  text-align: right;
+}
+
+.trend-plot {
+  position: relative;
+  height: 185px;
+}
+
+.grid-line {
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: #e8efea;
+}
+
+.line-100 {
+  top: 0;
+}
+
+.line-75 {
+  top: 40px;
+}
+
+.line-50 {
+  top: 80px;
+}
+
+.line-25 {
+  top: 120px;
+}
+
+.line-0 {
+  top: 160px;
+}
+
+.trend-svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  overflow: visible;
+}
+
+.trend-area {
+  fill: url("#trendFill");
+}
+
+.trend-line {
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.trend-point {
+  fill: var(--green);
+  stroke: #ffffff;
+  stroke-width: 3;
+}
+
+.trend-labels {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  gap: 4px;
+  align-items: start;
+}
+
+.trend-term-label {
+  color: var(--text-secondary);
+  font-size: 10px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+/* Data note */
+
+.data-note {
+  display: flex;
+  gap: 7px;
+  align-items: flex-start;
+  margin: 11px 3px 2px;
+  color: var(--text-secondary);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+/* States */
+
+.state-card {
+  display: grid;
+  min-height: 265px;
+  padding: 30px 20px;
+  place-items: center;
+  align-content: center;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.state-card p {
+  margin: 12px 0 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.state-card h2 {
+  margin: 12px 0 0;
+  font-size: 16px;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 4px solid #dceee3;
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+.error-icon {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 900;
+  background: var(--danger);
+  border-radius: 50%;
+}
+
+.retry-button {
+  margin-top: 16px;
+  padding: 9px 15px;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  background: var(--green);
+  border: 0;
+  border-radius: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Footer */
+
+.grade-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 35px;
+  padding: 8px 12px;
+  color: var(--text-secondary);
+  font-size: 10px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.live-status {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  background: #22b85f;
+  border-radius: 50%;
+}
+
+.info-button {
+  padding: 4px 6px;
+  color: var(--text-secondary);
+  font-size: 10px;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+}
+
+.info-button:hover {
+  color: var(--green);
+  background: var(--green-soft);
+}
+
+/* Info dialog */
+
+.info-dialog {
+  width: 300px;
+  padding: 20px;
+  color: var(--text-primary);
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  box-shadow: 0 20px 55px rgb(0 0 0 / 24%);
+}
+
+.info-dialog::backdrop {
+  background: rgb(0 0 0 / 35%);
+}
+
+.info-dialog h2 {
+  margin: 0 25px 12px 0;
+  color: var(--green-dark);
+  font-size: 16px;
+}
+
+.info-dialog p {
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.dialog-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  color: var(--text-secondary);
+  font-size: 22px;
+  background: transparent;
+  border: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Grade-specific spacing and chart geometry. Shared typography lives in shared.css. */
+
+.section-heading-row {
+  gap: 9px;
+}
+
+.scope-section {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 10px;
+}
+
+.scope-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #d7ded9;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.scope-button {
+  min-width: 0;
+  min-height: 38px;
+  padding: 9px 8px;
+  border: 0;
+  background: #fff;
+  color: #56615a;
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.scope-button + .scope-button {
+  border-left: 1px solid #d7ded9;
+}
+
+.scope-button.active {
+  background: #277a49;
+  color: #fff;
+}
+
+.gpa-comparison {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 10px;
+  padding: 13px 15px;
+}
+
+.gpa-comparison-list {
+  display: grid;
+  gap: 0;
+  min-width: 0;
+  margin: 9px 0 0;
+}
+
+.gpa-comparison-list > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+  padding: 8px 0;
+  border-top: 1px solid #e8efea;
+}
+
+.gpa-comparison-list dt {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gpa-comparison-list dd {
+  min-width: 42px;
+  margin: 0;
+  padding: 5px 8px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 850;
+  text-align: center;
+  background: var(--green-soft);
+  border-radius: 7px;
+}
+
+.grade-section,
+.trend-section {
+  width: 100%;
+  min-width: 0;
+}
+
+.section-subtitle {
+  margin: 5px 0 0 30px;
+}
+
+.source-badge {
+  padding: 5px 7px;
+  font-weight: 800;
+}
+
+.grade-chart {
+  grid-template-columns: repeat(5, 1fr);
+  height: 150px;
+  gap: 7px;
+  margin-top: 12px;
+  padding: 10px 6px 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 34px,
+    #e7eee9 35px
+  );
+}
+
+.grade-column {
+  grid-template-rows: 22px minmax(0, 1fr) 23px;
+}
+
+.grade-bar {
+  width: 27px;
+  max-width: 85%;
+  border-radius: 5px 5px 1px 1px;
+}
+
+.grade-label {
+  padding-top: 5px;
+}
+
+.summary-row {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.summary-stat {
+  justify-content: space-between;
+  min-width: 0;
+  gap: 6px;
+}
+
+.summary-stat strong {
+  padding: 6px 7px;
+}
+
+.trend-section {
+  margin-top: 9px;
+}
+
+.trend-chart-shell {
+  grid-template-columns: 35px minmax(0, 1fr);
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.trend-y-axis {
+  height: 190px;
+  padding-bottom: 30px;
+}
+
+.trend-plot {
+  height: 190px;
+  min-height: 180px;
+  min-width: 0;
+}
+
+.trend-svg {
+  height: 160px;
+}
+
+.line-75 {
+  top: 40px;
+}
+
+.line-50 {
+  top: 80px;
+}
+
+.line-25 {
+  top: 120px;
+}
+
+.line-0 {
+  top: 160px;
+}
+
+.trend-labels {
+  gap: 2px;
+  min-height: 28px;
+  align-items: center;
+}
+
+.trend-term-label {
+  min-width: 0;
+  padding: 0 1px;
+  overflow: hidden;
+  color: var(--bs-text-muted);
+  font-size: 10px;
+  line-height: 1;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.data-note {
+  gap: 7px;
+  margin: 10px 3px 2px;
+  color: var(--bs-text-muted);
+}
+
+.info-button {
+  min-height: 26px;
+  padding: 4px 6px;
+}
+
+/* Readable narrow-panel typography and responsive trend geometry. */
+
+.page-title {
+  font-size: 16px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.premium-badge,
+.professor-rank,
+.grade-footer,
+.live-status,
+.info-button {
+  font-size: 10px;
+}
+
+.chart-title,
+.content-section h2 {
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.chart-subtitle,
+.section-subtitle {
+  min-width: 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.scope-button {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.gpa-comparison-list > div {
+  min-height: 42px;
+  padding: 9px 0;
+}
+
+.comparison-label,
+.gpa-comparison-list dt {
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.comparison-value,
+.gpa-comparison-list dd {
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.class-context-message,
+.trend-empty-message {
+  margin: 9px 0 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.trend-empty-message {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  left: 38px;
+  margin: 0;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+.grade-percentage {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.grade-label {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.summary-stat span {
+  font-size: 11px;
+}
+
+.summary-stat strong {
+  font-size: 13px;
+}
+
+.trend-chart-shell {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin-top: 16px;
+}
+
+.trend-plot {
+  width: 100%;
+  height: 240px;
+  min-height: 220px;
+  overflow: visible;
+}
+
+.trend-svg {
+  width: 100%;
+  height: 240px;
+  overflow: visible;
+}
+
+.trend-grid-line {
+  stroke: #e3ebe6;
+  stroke-width: 1;
+}
+
+.axis-label {
+  fill: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.y-axis-label {
+  text-anchor: end;
+}
+
+.trend-line {
+  stroke-width: 2;
+}
+
+.trend-point {
+  stroke-width: 2;
+  cursor: pointer;
+  outline: none;
+  transition: r 140ms ease;
+}
+
+.trend-point:hover,
+.trend-point:focus {
+  r: 6px;
+  stroke: #dff4e7;
+}
+
+.point-value-group {
+  pointer-events: none;
+}
+
+.point-value-background {
+  fill: rgb(255 255 255 / 94%);
+}
+
+.point-value-label {
+  fill: var(--text-primary);
+  font-size: 11px;
+  font-weight: 600;
+  text-anchor: middle;
+}
+
+.trend-labels {
+  right: 16px;
+  bottom: 8px;
+  left: 38px;
+  min-height: 20px;
+  gap: 0;
+  pointer-events: none;
+}
+
+.trend-term-label {
+  overflow: visible;
+  padding: 0;
+  font-size: 10px;
+  font-weight: 650;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.data-note {
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.source-badge,
+.state-card p,
+.department,
+.rmp-button {
+  font-size: 10px;
+}

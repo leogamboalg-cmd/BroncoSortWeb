@@ -1,0 +1,278 @@
+<!-- src/core/premiumViews/gradeDistribution/grade-distribution.html -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Grade Distribution | BroncoSort</title>
+
+    <link rel="stylesheet" href="./grade-distribution.css" />
+    <link rel="stylesheet" href="../shared.css" />
+  </head>
+
+  <body>
+    <main class="grade-card">
+      <!-- Top navigation -->
+      <header class="grade-navigation">
+        <button
+          id="backButton"
+          class="back-button"
+          type="button"
+          aria-label="Return to professor profile"
+        >
+          <span aria-hidden="true">←</span>
+          Back
+        </button>
+
+        <div class="page-title">
+          <span class="page-title-icon" aria-hidden="true">▥</span>
+          <span>Grade Graph</span>
+        </div>
+
+        <span class="premium-badge">Premium</span>
+      </header>
+
+      <!-- Professor header -->
+      <section class="professor-header">
+        <div id="professorInitials" class="professor-avatar">JK</div>
+
+        <div class="professor-info">
+          <h1 id="professorName">John Korah</h1>
+
+          <p id="professorDepartment" class="department">Computer Science</p>
+
+          <p id="professorRank" class="professor-rank">
+            Top 32% · Ranked #26 of 83 professors
+          </p>
+        </div>
+
+        <a
+          id="rmpLink"
+          class="rmp-button"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          RMP
+        </a>
+      </section>
+
+      <!-- Scrollable content -->
+      <div class="grade-content">
+        <!-- Loading state -->
+        <section id="loadingState" class="state-card">
+          <div class="loading-spinner" aria-hidden="true"></div>
+          <p>Loading grade information...</p>
+        </section>
+
+        <!-- Error state -->
+        <section id="errorState" class="state-card hidden">
+          <div class="error-icon" aria-hidden="true">!</div>
+
+          <h2>Grade data unavailable</h2>
+
+          <p id="errorMessage">
+            BroncoSort could not load this professor's grade data.
+          </p>
+
+          <button id="retryButton" class="retry-button" type="button">
+            Try Again
+          </button>
+        </section>
+
+        <!-- Main grade view -->
+        <div id="gradeView" class="hidden">
+          <section class="scope-section" aria-label="Grade data scope">
+            <div class="scope-toggle" role="group">
+              <button
+                id="classScopeButton"
+                class="scope-button active"
+                type="button"
+                aria-pressed="true"
+              >
+                This Class
+              </button>
+              <button
+                id="professorScopeButton"
+                class="scope-button"
+                type="button"
+                aria-pressed="false"
+              >
+                Overall Professor
+              </button>
+            </div>
+          </section>
+
+          <section class="gpa-comparison content-section">
+            <h2 class="chart-title">GPA Comparison</h2>
+
+            <dl class="gpa-comparison-list">
+              <div>
+                <dt class="comparison-label">Prof Overall</dt>
+                <dd id="professorOverallGpa" class="comparison-value">N/A</dd>
+              </div>
+              <div>
+                <dt id="professorCourseLabel" class="comparison-label">Prof in Class</dt>
+                <dd id="professorCourseGpa" class="comparison-value">N/A</dd>
+              </div>
+              <div>
+                <dt id="courseOverallLabel" class="comparison-label">Class Overall</dt>
+                <dd id="courseOverallGpa" class="comparison-value">N/A</dd>
+              </div>
+            </dl>
+            <p id="classContextMessage" class="class-context-message hidden">
+              Class data unavailable
+            </p>
+          </section>
+
+          <section class="grade-section content-section">
+            <div class="section-heading-row">
+              <div>
+                <h2 class="chart-title">
+                  <span class="section-icon" aria-hidden="true">▥</span>
+                  Grade Distribution
+                </h2>
+
+                <p id="distributionSubtitle" class="section-subtitle chart-subtitle">
+                  Based on 18 student records
+                </p>
+              </div>
+            </div>
+
+            <!-- Grade bars -->
+            <div
+              id="gradeChart"
+              class="grade-chart"
+              role="img"
+              aria-label="Grade distribution chart"
+            >
+              <!-- Rendered by JavaScript -->
+            </div>
+
+            <div class="summary-row">
+              <div class="summary-stat">
+                <span>Total Students</span>
+                <strong id="totalStudents">0</strong>
+              </div>
+
+              <div class="summary-stat">
+                <span>Sections</span>
+                <strong id="sectionCount">0</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="trend-section content-section">
+            <div class="section-heading-row">
+              <div>
+                <h2 class="chart-title">
+                  <span class="section-icon trend-icon" aria-hidden="true">
+                    ↗
+                  </span>
+                  Trends Over Time
+                </h2>
+
+                <p class="section-subtitle chart-subtitle">
+                  Average GPA by term
+                </p>
+              </div>
+            </div>
+
+            <div class="trend-chart-shell">
+              <div class="trend-plot">
+                <svg
+                  id="trendSvg"
+                  class="trend-svg"
+                  viewBox="0 0 300 256"
+                  preserveAspectRatio="xMidYMid meet"
+                  aria-label="Average GPA trend"
+                >
+                  <defs>
+                    <linearGradient id="trendFill" x1="0" y1="0" x2="0" y2="1">
+                      <stop
+                        offset="0%"
+                        stop-color="#43b96d"
+                        stop-opacity="0.16"
+                      />
+
+                      <stop
+                        offset="100%"
+                        stop-color="#43b96d"
+                        stop-opacity="0.02"
+                      />
+                    </linearGradient>
+                  </defs>
+
+                  <g id="trendAxes"></g>
+                  <path id="trendArea" class="trend-area" d=""></path>
+
+                  <polyline
+                    id="trendLine"
+                    class="trend-line"
+                    points=""
+                  ></polyline>
+
+                  <g id="trendPoints"></g>
+                </svg>
+
+                <div id="trendLabels" class="trend-labels">
+                  <!-- Rendered by JavaScript -->
+                </div>
+                <p id="trendEmptyMessage" class="trend-empty-message hidden">
+                  No GPA history is available for this scope.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <p class="data-note">
+            <span aria-hidden="true">ⓘ</span>
+
+            Grade information may combine multiple courses or terms. Verify the
+            source before using it to select a class.
+          </p>
+        </div>
+      </div>
+
+      <footer class="grade-footer">
+        <span class="live-status">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span id="dataStatusText">Live data</span>
+        </span>
+
+        <button id="infoButton" class="info-button" type="button">
+          How is this calculated?
+        </button>
+      </footer>
+    </main>
+
+    <dialog id="infoDialog" class="info-dialog">
+      <button
+        id="closeInfoButton"
+        class="dialog-close"
+        type="button"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+      <h2>How this is calculated</h2>
+
+      <p>
+        Grade percentages are calculated from the available grade records for
+        this professor. The average grade uses grade-point values weighted by
+        the number of records in each category.
+      </p>
+
+      <p>
+        “Would take again” is separate from the grade distribution and may come
+        from student-review data.
+      </p>
+    </dialog>
+
+    <script src="./grade-distribution.js"></script>
+  </body>
+</html>

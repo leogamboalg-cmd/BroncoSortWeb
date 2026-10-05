@@ -241,6 +241,42 @@
         line-height: 1.5;
       }
 
+      .purchase-instructions {
+        margin-top: 24px;
+        padding: 18px 20px;
+        border: 1px solid #b9dfc3;
+        border-radius: 16px;
+        background: #ecf9ef;
+        color: #164b28;
+        line-height: 1.55;
+      }
+
+      .purchase-instructions strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 1.05rem;
+      }
+
+      .purchase-instructions p {
+        color: #275a38;
+      }
+
+      .purchase-link {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 13px 18px;
+        border-radius: 12px;
+        background: var(--green);
+        color: white;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .purchase-link:hover,
+      .purchase-link:focus-visible {
+        background: #066b2a;
+      }
+
       .extension-step {
         margin-top: 14px;
         padding: 14px 16px;
@@ -279,13 +315,16 @@
       }
 
       .auth-box {
-        margin-top: 28px;
-        padding-top: 26px;
-        border-top: 1px solid #e5ebe6;
+        margin-top: 18px;
+        padding: 22px;
+        border: 2px solid #9ad8ab;
+        border-radius: 18px;
+        background: #f5fcf6;
+        scroll-margin-top: 110px;
       }
 
       .auth-box h2 {
-        font-size: 1.2rem;
+        font-size: 1.35rem;
         margin-bottom: 8px;
       }
 
@@ -293,6 +332,39 @@
         color: var(--muted);
         line-height: 1.6;
         font-size: 0.95rem;
+      }
+
+      .auth-box .extension-step {
+        color: #664b08;
+      }
+
+      .purchase-steps {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 20px;
+        list-style: none;
+      }
+
+      .purchase-steps li {
+        padding: 12px 14px;
+        border: 1px solid #d7e3da;
+        border-radius: 12px;
+        background: white;
+        color: #64736a;
+        font-size: 0.87rem;
+        font-weight: 800;
+      }
+
+      .purchase-steps li.current {
+        border-color: #0a7a35;
+        background: #e1f6e6;
+        color: #075c28;
+      }
+
+      .purchase-steps li.complete {
+        border-color: #b9dfc3;
+        color: #08732f;
       }
 
       #googleButton {
@@ -639,6 +711,10 @@
           padding: 24px;
         }
 
+        .purchase-steps {
+          grid-template-columns: 1fr;
+        }
+
         .card {
           padding: 26px;
         }
@@ -709,6 +785,12 @@
           account-based access across supported schools for three full months.
         </p>
 
+        <div class="purchase-instructions">
+          <strong>Ready to buy Premium?</strong>
+          <p id="purchaseIntro">Sign in with Google, then pay $4.99 at checkout.</p>
+          <a id="purchaseLink" class="purchase-link" href="#purchase">Sign in to buy Premium ↓</a>
+        </div>
+
         <div class="trust-row">
           <span>✓ Secure Google sign-in</span>
           <span>✓ Stripe checkout</span>
@@ -740,9 +822,50 @@
           </p>
 
           <div class="extension-step">
-            <strong>Important:</strong> Sign in here to purchase, then sign in
-            inside the BroncoSort extension with the same Google account to use
-            your Premium features.
+            <strong>Already have an account?</strong> Sign in with that same
+            Google account below. Creating an account alone does not purchase
+            Premium.
+          </div>
+
+          <div id="purchase" class="auth-box">
+            <ol class="purchase-steps" aria-label="Steps to buy Premium">
+              <li id="signInStep" class="current" aria-current="step">1. Sign in with Google</li>
+              <li id="paymentStep">2. Pay $4.99</li>
+            </ol>
+            <h2 id="purchaseStepTitle">Step 1: Sign in with Google</h2>
+            <p id="purchaseStepDescription">
+              Click the Google button below. Once you sign in, the button to
+              buy Premium will appear here.
+            </p>
+
+            <div id="signedInUser" class="account-card">
+              <img id="userPicture" alt="" />
+              <div class="account-text">
+                <strong id="userName"></strong>
+                <span id="userEmail"></span>
+                <span
+                  id="premiumExpiration"
+                  class="premium-expiration hidden"
+                ></span>
+              </div>
+            </div>
+
+            <div id="googleButton"></div>
+
+            <button id="checkoutButton" class="buy-btn hidden" type="button">
+              Get 3 months of Premium — $4.99
+            </button>
+
+            <p class="extension-step">
+              <strong>After payment:</strong> Sign in to the BroncoSort extension
+              with this same Google account to use Premium.
+            </p>
+
+            <button id="signOutButton" class="signout-btn hidden" type="button">
+              Use a different Google account
+            </button>
+
+            <p id="statusMessage" class="status" aria-live="polite"></p>
           </div>
 
           <ul class="features">
@@ -777,46 +900,6 @@
               >
             </li>
           </ul>
-
-          <div class="auth-box">
-            <h2>1. Sign in with your Google account</h2>
-            <p>
-              Google securely verifies your identity so Premium can be linked to
-              the correct BroncoSort account. BroncoSort never receives your
-              Google password. After signing in, you can review and complete
-              your $4.99 purchase securely through Stripe.
-            </p>
-
-            <div id="signedInUser" class="account-card">
-              <img id="userPicture" alt="" />
-              <div class="account-text">
-                <strong id="userName"></strong>
-                <span id="userEmail"></span>
-                <span
-                  id="premiumExpiration"
-                  class="premium-expiration hidden"
-                ></span>
-              </div>
-            </div>
-
-            <div id="googleButton"></div>
-
-            <button id="checkoutButton" class="buy-btn hidden" type="button">
-              Get 3 months of Premium — $4.99
-            </button>
-
-            <p class="extension-step">
-              <strong>After checkout:</strong> Open BroncoSort from your Chrome
-              toolbar and sign in with this same Google account. Your Premium
-              access will then appear in the extension.
-            </p>
-
-            <button id="signOutButton" class="signout-btn hidden" type="button">
-              Use a different Google account
-            </button>
-
-            <p id="statusMessage" class="status" aria-live="polite"></p>
-          </div>
         </div>
       </article>
     </section>
@@ -984,6 +1067,12 @@
       const googleButton = document.getElementById("googleButton");
       const checkoutButton = document.getElementById("checkoutButton");
       const signOutButton = document.getElementById("signOutButton");
+      const signInStep = document.getElementById("signInStep");
+      const paymentStep = document.getElementById("paymentStep");
+      const purchaseIntro = document.getElementById("purchaseIntro");
+      const purchaseLink = document.getElementById("purchaseLink");
+      const purchaseStepTitle = document.getElementById("purchaseStepTitle");
+      const purchaseStepDescription = document.getElementById("purchaseStepDescription");
       const statusMessage = document.getElementById("statusMessage");
       const signedInUser = document.getElementById("signedInUser");
       const userPicture = document.getElementById("userPicture");
@@ -1011,6 +1100,28 @@
       }
 
       function showSignedIn(user) {
+        purchaseIntro.textContent = user.isPremium
+          ? "Premium is active on your account. Use the same Google account in the extension."
+          : "You're signed in. Complete your $4.99 purchase below.";
+        purchaseLink.textContent = user.isPremium
+          ? "View your Premium account ↓"
+          : "Continue to purchase ↓";
+        signInStep.classList.remove("current");
+        signInStep.classList.add("complete");
+        signInStep.removeAttribute("aria-current");
+        paymentStep.classList.toggle("current", !user.isPremium);
+        paymentStep.classList.toggle("complete", Boolean(user.isPremium));
+        if (user.isPremium) {
+          paymentStep.removeAttribute("aria-current");
+        } else {
+          paymentStep.setAttribute("aria-current", "step");
+        }
+        purchaseStepTitle.textContent = user.isPremium
+          ? "Your Premium is active"
+          : "Step 2: Complete your purchase";
+        purchaseStepDescription.textContent = user.isPremium
+          ? "Premium is already linked to this Google account. Sign in to the BroncoSort extension with the same account to use it."
+          : "You're signed in. Click the button below to pay $4.99 through Stripe Checkout. Your account is not Premium until payment is complete.";
         userName.textContent = user.name || "BroncoSort user";
         userEmail.textContent = user.email || "";
 
@@ -1048,6 +1159,16 @@
         broncoSortToken = null;
         sessionStorage.removeItem("broncosortToken");
         sessionStorage.removeItem("broncosortUser");
+
+        purchaseIntro.textContent = "Sign in with Google, then pay $4.99 at checkout.";
+        purchaseLink.textContent = "Sign in to buy Premium ↓";
+        signInStep.classList.add("current");
+        signInStep.classList.remove("complete");
+        signInStep.setAttribute("aria-current", "step");
+        paymentStep.classList.remove("current", "complete");
+        paymentStep.removeAttribute("aria-current");
+        purchaseStepTitle.textContent = "Step 1: Sign in with Google";
+        purchaseStepDescription.textContent = "Click the Google button below. Once you sign in, the button to buy Premium will appear here.";
 
         signedInUser.classList.remove("visible");
         googleButton.classList.remove("hidden");
